@@ -1,0 +1,342 @@
+/* Day Mode Colors*/
+$main-color1-day: hsl(269, 99%, 61%);
+$icon-color1-hover: hsl(260, 100%, 66%);
+$main-color2-day: hsl(278, 100%, 98%);
+$font-color1-day: hsla(265, 28%, 27%, 1);
+$font-color2-day: hsla(300, 100%, 97%, 1);
+$icon-solor2-day: hsla(251, 7%, 71%, 1);
+$font-color1-headings: hsl(264, 17%, 32%);
+$font-color2-headings: hsla(256, 8%, 65%, 1);
+$font-color1-paramsHead: hsla(240, 2%, 68%, 1);
+$font-color2-paramsValue: hsla(256, 12%, 37%, 1);
+
+/* Body Background - Frame*/
+body {
+  background: linear-gradient(
+    to right,
+    $main-color1-day 30%,
+    $main-color2-day 30%
+  );
+}
+
+/* ---------- External Frame ---------- */
+.externalFrame__container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: grid;
+
+  .container__column_Left,
+  .container__row_MidTop,
+  .container__row_MidBottom,
+  .container__row_RightBottom {
+    background: #ffffff;
+    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
+  }
+
+  .container__row_MidTop,
+  .container__row_MidBottom {
+    width: 61vw;
+  }
+  .container__row_RightTop,
+  .container__row_RightBottom {
+    width: 23vw;
+  }
+
+  .container__row_MidTop,
+  .container__row_RightTop {
+    height: 11vh;
+  }
+
+  .container__row_MidBottom,
+  .container__row_RightBottom {
+    height: 79vh;
+  }
+
+  /* ---------- Left Column ---------- */
+  .container__column_Left {
+    grid-area: allLeft;
+    border-radius: 8px 0px 0px 8px;
+    width: 7vw;
+    height: 90vh;
+
+    .columnLeftData__Button {
+      display: flex;
+      flex-direction: column;
+      color: $icon-solor2-day;
+      justify-content: center;
+
+      padding: 55% 0% 0% 30%;
+
+      * {
+        margin-top: 70%;
+      }
+    }
+  }
+
+  /* ---------- Mid Top Row ---------- */
+  .container__row_MidTop {
+    grid-area: midTop;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+
+    .rowMidTop__Data {
+      margin: 2% 3% 0 5%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+
+      .rowMidTop__placeDetails {
+        color: $font-color1-day;
+        width: 60%;
+        font-size: 1.85em;
+      }
+
+      .rowMidTop__searchDetails {
+        width: 40%;
+
+        .rowMidTop__searchBar {
+          display: flex;
+          width: 25px;
+          margin: 0px auto;
+          background: rgb(255, 255, 255);
+          border-radius: 25px;
+          cursor: pointer;
+          transition: 0.8s;
+          align-items: center;
+          box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.4);
+          margin: 0px auto 0px auto;
+          padding: 5px 8px;
+
+          .input__searchBar {
+            transition: 0.8s;
+            width: 0%;
+            outline: none;
+            border: none;
+            background: transparent;
+            font-size: 1em;
+          }
+
+          &:hover {
+            width: 200px;
+            .input__searchBar {
+              width: 188px;
+            }
+          }
+          .btn__searchBar {
+            align-items: center;
+            color: $main-color1-day;
+            font-size: 1.2em;
+            margin-left: -13%;
+            border: none;
+            background: transparent;
+          }
+        }
+      }
+    }
+  }
+
+  /* ---------- Mid Bottom Row ---------- */
+  .container__row_MidBottom {
+    grid-area: midBottom;
+
+    .rowMidBottom__Data {
+      display: grid;
+      width: 54.9vw;
+      height: 71.1vh;
+      margin: 1.975vh 0 0 3.05vw;
+
+      .data__currentTemp_Container {
+        grid-area: currentTempContainer;
+        width: 12.078vw;
+        height: 20.619vh;
+
+        .currentTemp_Text {
+          color: $font-color1-headings;
+          font-size: 1.3em;
+        }
+        .currentTemp_Value {
+        }
+      }
+      .data__providers_Container {
+        grid-area: providersContainer;
+        margin-top: 0.711vh;
+        width: 12.078vw;
+        height: 20.619vh;
+
+        .providers_Text {
+          color: $font-color2-headings;
+          font-size: 1.2em;
+        }
+        .providers_Value {
+          color: $font-color2-paramsValue;
+          font-size: 1.1em;
+        }
+      }
+
+      .data__activeParameters_Container {
+        grid-area: activeParamsContainer;
+        margin-left: 0.549vw;
+        width: 24.156vw;
+        height: 41.238vh;
+
+        .activeParameters_Text {
+          font-size: 1.2em;
+          color: $font-color2-headings;
+        }
+        .activeParameters_Value {
+        }
+      }
+      .data__description_Container {
+        grid-area: desciptionContainer;
+        width: 12.078vw;
+        height: 41.238vh;
+        margin-left: 0.549vw;
+
+        .description_Text {
+          font-size: 1.2em;
+          color: $font-color2-headings;
+        }
+        .description_Value {
+        }
+      }
+      .data__forecast12Hour_Container {
+        grid-area: forecast12Container;
+        margin-top: 0.711vh;
+        width: 49.41vw;
+        height: 21.33vh;
+
+        .forecast12Hour_Text {
+          font-size: 1.2em;
+          color: $font-color1-headings;
+        }
+        .forecast12Hour_Value {
+        }
+      }
+
+      grid-template-areas:
+        "currentTempContainer activeParamsContainer activeParamsContainer desciptionContainer"
+        "providersContainer activeParamsContainer activeParamsContainer desciptionContainer"
+        "forecast12Container forecast12Container forecast12Container forecast12Container";
+    }
+  }
+
+  /* ---------- Right Top Row ---------- */
+  .container__row_RightTop {
+    grid-area: rightTop;
+    background: $main-color1-day;
+    border-radius: 0px 8px 0px 0px;
+
+    .rowRightTop__Data {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      color: $font-color2-day;
+
+      .userCreator {
+        margin-left: 10%;
+      }
+    }
+  }
+
+  /* ---------- Right Bottom Row ---------- */
+  .container__row_RightBottom {
+    grid-area: rightBottom;
+    border-radius: 0px 0px 8px 0px;
+
+    .rowRightBottom__Data {
+      display: flex;
+      flex-direction: column;
+
+      .rowRightBottom__Data__FiveDayForecast {
+        display: flex;
+        flex-direction: column;
+
+        .fiveDayForecast__Header {
+          display: flex;
+          flex-direction: row;
+
+          .fiveDayForecast__Header_Name {
+            font-size: 1.2em;
+            color: $font-color1-headings;
+          }
+          .fiveDayForecast__Header_Value {
+            font-size: 1.15em;
+            color: $font-color1-headings;
+          }
+        }
+        .fiveDayForecast__Data {
+          display: flex;
+          flex-direction: row;
+
+          .fiveDayForecast__Data_Name {
+            display: flex;
+            flex-direction: column;
+            color: $font-color1-paramsHead;
+            font-size: 1.1em;
+          }
+          .fiveDayForecast__Data_Value {
+            display: flex;
+            flex-direction: column;
+            color: $font-color2-paramsValue;
+            font-size: 1.1em;
+          }
+        }
+      }
+
+      .rowRightBottom__Data__Contact {
+        display: grid;
+        justify-content: center;
+        align-content: center;
+
+        .contactMe_Text {
+          grid-area: contactMeText;
+          color: $font-color2-paramsValue;
+          font-size: 1.2em;
+        }
+        .contactMe__Website {
+          grid-area: contactMeWebsite;
+        }
+        .contactMe__LinkedIn {
+          grid-area: contactMeLinkedIn;
+        }
+        .contactMe__Github {
+          grid-area: contactMeGithub;
+        }
+        .contactMe__Twitter {
+          grid-area: contactMeTwitter;
+        }
+        .contactMe__Instagram {
+          grid-area: contactMeInstagram;
+        }
+        .contactMe__Facebook {
+          grid-area: contactMeFacebook;
+        }
+        .contactMe__Copyright {
+          grid-area: contactMeCopyright;
+          color: $font-color1-paramsHead;
+          font-size: 0.8em;
+        }
+
+        grid-template-areas:
+          "contactMeText contactMeText contactMeText"
+          "contactMeWebsite contactMeLinkedIn contactMeGithub"
+          "contactMeTwitter contactMeInstagram contactMeFacebook"
+          "contactMeCopyright contactMeCopyright contactMeCopyright";
+      }
+    }
+  }
+
+  grid-template-areas:
+    "allLeft midTop rightTop"
+    "allLeft midBottom rightBottom"
+    "allLeft midBottom rightBottom"
+    "allLeft midBottom rightBottom"
+    "allLeft midBottom rightBottom"
+    "allLeft midBottom rightBottom";
+}
