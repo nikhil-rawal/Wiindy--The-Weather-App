@@ -1,5 +1,7 @@
 /* Day Mode Colors*/
 $main-color1-day: hsl(269, 99%, 61%);
+$main-f12color-day: hsla(269, 99%, 61%, 0.5);
+$main-f12color2-day: rgb(255, 243, 255);
 $icon-color1-hover: hsl(260, 100%, 66%);
 $main-color2-day: hsl(278, 100%, 98%);
 $font-color1-day: hsla(265, 28%, 27%, 1);
@@ -122,6 +124,7 @@ body {
           }
 
           &:hover {
+            cursor: pointer;
             width: 200px;
             .input__searchBar {
               width: 188px;
@@ -148,33 +151,85 @@ body {
       display: grid;
       width: 54.9vw;
       height: 71.1vh;
-      margin: 1.975vh 0 0 3.05vw;
+      margin: 1.975vh 0 0 2.55vw;
 
       .data__currentTemp_Container {
         grid-area: currentTempContainer;
         width: 12.078vw;
-        height: 20.619vh;
+        height: 41vh;
 
         .currentTemp_Text {
           color: $font-color1-headings;
           font-size: 1.3em;
         }
-        .currentTemp_Value {
-        }
-      }
-      .data__providers_Container {
-        grid-area: providersContainer;
-        margin-top: 0.711vh;
-        width: 12.078vw;
-        height: 20.619vh;
 
-        .providers_Text {
-          color: $font-color2-headings;
-          font-size: 1.2em;
-        }
-        .providers_Value {
-          color: $font-color2-paramsValue;
-          font-size: 1.1em;
+        .currentTemp_Value {
+          margin-top: 25px;
+          margin-left: -10px;
+
+          .outerMostValue_Circle {
+            width: 165px;
+            height: 165px;
+            border-radius: 50%;
+            background-color: rgba(72, 255, 0, 0.8);
+            // background: linear-gradient(
+            //   to right,
+            //   rgba(72, 255, 0, 0.8) 90%,
+            //   rgba(72, 255, 0, 0.1)
+            // );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .tempVal_outerCircle {
+              width: 145px;
+              height: 145px;
+              border-radius: 50%;
+              display: flex;
+              border: 1px solid rgba(0, 0, 0, 0.25);
+              box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.25);
+              align-items: center;
+              justify-content: center;
+
+              .animationCircle {
+                //margin-top: -146px;
+                position: absolute;
+                width: 9px;
+                height: 9px;
+                background-color: rgb(255, 255, 255);
+                border-radius: 50%;
+              }
+
+              .tempVal_innerCircle {
+                width: 125px;
+                height: 125px;
+                border-radius: 50%;
+                background-color: #ffffff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .tempVal {
+                  color: hsla(265, 28%, 27%, 1);
+                  font-size: 4em;
+                }
+              }
+            }
+            &:hover {
+              cursor: pointer;
+              .animationCircle {
+                animation: animate 3s linear infinite;
+              }
+            }
+            @keyframes animate {
+              from {
+                transform: rotate(0deg) translateX(72px) rotate(0deg);
+              }
+              to {
+                transform: rotate(360deg) translateX(72px) rotate(-360deg);
+              }
+            }
+          }
         }
       }
 
@@ -189,8 +244,77 @@ body {
           color: $font-color2-headings;
         }
         .activeParameters_Value {
+          display: flex;
+          flex-direction: row;
+
+          .parameters__Left,
+          .parameters__Right {
+            display: flex;
+            flex-direction: column;
+            width: 12.1vw;
+            height: 41vh;
+          }
+
+          .params_Container {
+            display: flex;
+            flex-direction: row;
+            margin-top: 18px;
+
+            .param_Box {
+              border-radius: 10px;
+              width: 45px;
+              height: 45px;
+              background-color: blue;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+
+              .param_Icon {
+                width: 10px;
+                height: 10px;
+                background-color: white;
+              }
+            }
+
+            .param_Values {
+              margin-left: 10px;
+              margin-top: 1px;
+              .param_Value1 {
+                color: $font-color1-paramsHead;
+                font-size: 0.9em;
+              }
+              .param_Value2 {
+                margin-top: 2px;
+                color: $font-color2-paramsValue;
+                font-size: 1.1em;
+              }
+            }
+          }
+
+          .parameters__Left {
+            .params_Wind_Container {
+            }
+            .params_FeelsLike_Container {
+            }
+            .params_UVIndex_Container {
+            }
+            .params_Pressure_Container {
+            }
+          }
+
+          .parameters__Right {
+            .params_Visibility_Container {
+            }
+            .params_CloudCover_Container {
+            }
+            .params_Precipitation_Container {
+            }
+            .params_Humidity_Container {
+            }
+          }
         }
       }
+
       .data__description_Container {
         grid-area: desciptionContainer;
         width: 12.078vw;
@@ -204,10 +328,11 @@ body {
         .description_Value {
         }
       }
+
       .data__forecast12Hour_Container {
         grid-area: forecast12Container;
         margin-top: 0.711vh;
-        width: 49.41vw;
+        width: 54.5vw;
         height: 21.33vh;
 
         .forecast12Hour_Text {
@@ -215,12 +340,50 @@ body {
           color: $font-color1-headings;
         }
         .forecast12Hour_Value {
+          width: 54vw;
+          height: 21vh;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+
+          .f12__container {
+            height: 18.5vh;
+            width: 3.65vw;
+            box-shadow: 0px 0px 3px 0px $main-f12color-day;
+            background: $main-f12color2-day;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+
+            .f12__time {
+              color: $font-color1-day;
+            }
+            .f12__icon {
+              img {
+                overflow: hidden;
+              }
+            }
+            .f12__temp {
+              color: $font-color1-day;
+            }
+
+            &:hover {
+              cursor: pointer;
+              transition: all 0.4s ease-in-out;
+              transform: scale(1.1);
+              box-shadow: 0px 0px 2px 2px hsla(269, 99%, 61%, 0.5);
+              background-color: rgb(252, 248, 255);
+            }
+          }
         }
       }
 
       grid-template-areas:
         "currentTempContainer activeParamsContainer activeParamsContainer desciptionContainer"
-        "providersContainer activeParamsContainer activeParamsContainer desciptionContainer"
+        "currentTempContainer activeParamsContainer activeParamsContainer desciptionContainer"
         "forecast12Container forecast12Container forecast12Container forecast12Container";
     }
   }
@@ -254,50 +417,115 @@ body {
       flex-direction: column;
 
       .rowRightBottom__Data__FiveDayForecast {
+        line-height: 1.5em;
         display: flex;
         flex-direction: column;
+        padding: 1.5vh 2vw 1.5vh 2vw;
+        height: 25.1vh;
 
         .fiveDayForecast__Header {
           display: flex;
           flex-direction: row;
+          width: 19vw;
 
           .fiveDayForecast__Header_Name {
             font-size: 1.2em;
             color: $font-color1-headings;
+            width: 14vw;
           }
           .fiveDayForecast__Header_Value {
             font-size: 1.15em;
             color: $font-color1-headings;
+            width: 5vw;
+
+            display: block;
+            sup {
+              position: absolute;
+              margin-top: -3.5px;
+            }
           }
         }
+
         .fiveDayForecast__Data {
           display: flex;
           flex-direction: row;
+          font-size: 1.1em;
+          width: 19vw;
 
           .fiveDayForecast__Data_Name {
             display: flex;
             flex-direction: column;
             color: $font-color1-paramsHead;
-            font-size: 1.1em;
+            width: 14vw;
           }
           .fiveDayForecast__Data_Value {
             display: flex;
             flex-direction: column;
             color: $font-color2-paramsValue;
-            font-size: 1.1em;
+            width: 5vw;
+          }
+        }
+      }
+
+      .data__providers_Container {
+        line-height: 1.5em;
+        padding: 5vh 2vw 1.5vh 2vw;
+        width: 19vw;
+        height: 14vh;
+
+        .providers_Text {
+          color: $font-color2-headings;
+          font-size: 1.2em;
+        }
+        .providers_Value {
+          color: $font-color2-paramsValue;
+          font-size: 1.1em;
+          display: flex;
+          flex-direction: row;
+          align-content: center;
+          padding: 3px;
+        }
+
+        .provider_aweather {
+          &:hover {
+            color: hsl(18, 84.9%, 49.2%);
+          }
+        }
+        .provider_wstack {
+          &:hover {
+            color: hsl(201.3, 19%, 50.6%);
           }
         }
       }
 
       .rowRightBottom__Data__Contact {
         display: grid;
-        justify-content: center;
-        align-content: center;
+        // justify-content: center;
+        // align-content: center;
+        height: 30vh;
+        padding: 1vh 1.75vw 0vh 1.75vw;
+
+        text-align: center;
+
+        a {
+          font-size: 2em;
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+        a,
+        a:visited,
+        a:hover,
+        a:active {
+          text-decoration: none;
+          color: hsl(269, 99%, 61%);
+        }
 
         .contactMe_Text {
           grid-area: contactMeText;
           color: $font-color2-paramsValue;
           font-size: 1.2em;
+          // padding: 10% 0 10% 0;
         }
         .contactMe__Website {
           grid-area: contactMeWebsite;
@@ -317,10 +545,14 @@ body {
         .contactMe__Facebook {
           grid-area: contactMeFacebook;
         }
+        .contactMe__Email {
+          grid-area: contactMeEmail;
+        }
         .contactMe__Copyright {
           grid-area: contactMeCopyright;
           color: $font-color1-paramsHead;
           font-size: 0.8em;
+          // padding: 5% 0 0% 0;
         }
 
         grid-template-areas:
