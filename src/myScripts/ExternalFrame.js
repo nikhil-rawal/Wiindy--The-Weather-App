@@ -16,7 +16,7 @@ function ExternalFrame() {
 
     // nikhil const accuWeatherKey = '6fJHLNcuVZzxYAl1kElDvOcwOZrKGych';
     //const accuWeatherKey = '0lOiuGFXOPnlXrGVatvupDjjaGVRdvG2';
-    const accuWeatherKey = '6fJHLNcuVZzxYAl1kElDvOcwOZrKGych';
+    const accuWeatherKey = '0lOiuGFXOPnlXrGVatvupDjjaGVRdvG2';
     const accuWeatherBase = 'http://dataservice.accuweather.com/';
     const accuWeatherURLPart = `?apikey=${accuWeatherKey}`;
     const weatherStackKey = 'f35cc61b81d20fdddee9ad30e0fe284a';
@@ -24,11 +24,7 @@ function ExternalFrame() {
     const [text, setText] = useState("Toronto");
     const [accuWeather12Hour, setaccuWeather12Hour] = useState([]);
     const [accuWeather5Day, setaccuWeather5Day] = useState([]);
-    const [weatherStack, setweatherStack] = useState([]);
-
-    function inputChangeHandler(e) {
-        setText(prevValue => (prevValue = e.target.value.trim()));
-    }
+    const [weatherStack, setweatherStack] = useState();
 
     async function formSubmitHandler(event) {
         event.preventDefault();
@@ -64,21 +60,17 @@ function ExternalFrame() {
         )
     }
 
-    /* useEffect(() => {
-        if ((accuWeather12Hour === undefined) || (accuWeather12Hour.length === 0)) return;
-        console.log("Accuweather 12 Hour Use Effect", accuWeather12Hour);
-    }, [accuWeather12Hour]);
+    function inputChangeHandler(e) {
+        setText(prevValue => (prevValue = e.target.value.trim()))
 
-    useEffect(() => {
-        if ((accuWeather5Day === undefined) || (accuWeather5Day.length === 0)) return;
-        console.log("Accuweather 5 Day Use Effect", accuWeather5Day);
-    }, [accuWeather5Day]);
+        console.log(text)
+    }
 
-    useEffect(() => {
-        if ((weatherStack === undefined) || (weatherStack.length === 0)) return;
-        console.log("WeatherStack Use Effect", weatherStack);
-    }, [weatherStack]); */
+    /*
+    (weatherStack === undefined || weatherStack === null || weatherStack.length === 0 || typeof weatherStack === 'string') ? 
 
+    : setText(prevValue => (prevValue = `${weatherStack[0].location.name}, ${weatherStack[0].location.country}`))
+    */
 
     return (
         <AccuWeather12HourContext.Provider value={accuWeather12Hour}>
