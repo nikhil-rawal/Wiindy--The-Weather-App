@@ -19,7 +19,7 @@ function ExternalFrame() {
     // nikhil const accuWeatherKey = '6fJHLNcuVZzxYAl1kElDvOcwOZrKGych';
     //const accuWeatherKey = '0lOiuGFXOPnlXrGVatvupDjjaGVRdvG2';
     const accuWeatherKey = '6fJHLNcuVZzxYAl1kElDvOcwOZrKGych';
-    const accuWeatherBase = 'http://dataservice.accuweather.com/';
+    const accuWeatherBase = 'dataservice.accuweather.com/';
     const accuWeatherURLPart = `?apikey=${accuWeatherKey}`;
     const weatherStackKey = 'f35cc61b81d20fdddee9ad30e0fe284a';
 
@@ -42,7 +42,7 @@ function ExternalFrame() {
             const accessKey = reqAccuCityID.data[0].Key;
 
             /* ---------- WeatherStack ---------- */
-            const forecastweatherStack = `http://api.weatherstack.com/current?access_key=${weatherStackKey}&query=${text}`;
+            const forecastweatherStack = `api.weatherstack.com/current?access_key=${weatherStackKey}&query=${text}`;
             const reqWeatherStackAPI = await Axios.get(forecastweatherStack);
             setweatherStack([reqWeatherStackAPI.data]);
 
