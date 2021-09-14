@@ -114,7 +114,6 @@ function ExternalFrame() {
                                     <AlertTitle>Error</AlertTitle>
                                     Could not fetch details. Please try again!
                                 </Alert>
-                                window.location.reload(false);
                             }
                         })()
                     }
