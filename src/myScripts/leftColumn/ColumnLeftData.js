@@ -13,13 +13,6 @@ function ColumnLeftData() {
         setweatherStackData(WeatherStack);
     }, [WeatherStack])
 
-    function handleMouseEnter(e) {
-        e.target.style.color = "hsl(269, 99%, 61%)";
-    }
-    function handleMouseLeave(e) {
-        e.target.style.color = "hsla(251, 7%, 71%, 1);"
-    }
-
     let url = "";
     let lat = "";
     let lon = "";
@@ -32,13 +25,19 @@ function ColumnLeftData() {
         targ = "_blank";
     }
 
+    function lightsOff(e) {
+        e.target.style.color = "hsl(269, 99%, 61%)";
+    }
+    function lightsOn(e) {
+        e.target.style.color = "hsl(269, 99%, 61%)";
+    }
 
     return (
         <div className="columnLeftData__Button">
             <MdDashboard size={42} style={{ color: "hsl(269, 99%, 61%)" }} />
-            <a href={url} target={targ} style={{ margin: 0 }}><FaMapMarkerAlt size={42} onMouseOver={handleMouseEnter} onMouseLeave={handleMouseLeave} /></a>
-            <FaLightbulb size={42} />
-            <FaRegLightbulb size={42} />
+            <a href={url} target={targ} style={{ margin: 0 }}><FaMapMarkerAlt className="map__icon" size={42} /></a>
+            <FaLightbulb onClick={lightsOff} className="lights_Off" size={42} />
+            <FaRegLightbulb onClick={lightsOn} className="lights_On" size={42} />
         </div>
     )
 }

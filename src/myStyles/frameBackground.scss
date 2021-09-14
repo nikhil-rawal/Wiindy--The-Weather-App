@@ -1,5 +1,6 @@
 /* Day Mode Colors*/
 $main-color1-day: hsl(269, 99%, 61%);
+$main-color1-dim: hsla(269, 99%, 61%, 0.8);
 $main-f12color-day: hsla(269, 99%, 61%, 0.5);
 $main-f12color2-day: rgb(255, 243, 255);
 $icon-color1-hover: hsl(260, 100%, 66%);
@@ -11,83 +12,93 @@ $font-color1-headings: hsl(264, 17%, 32%);
 $font-color2-headings: hsla(256, 8%, 65%, 1);
 $font-color1-paramsHead: hsla(240, 2%, 68%, 1);
 $font-color2-paramsValue: hsla(256, 12%, 37%, 1);
+$white-color-dim: #ffffffd1;
 
 /* SKELETON LOADING */
 
 .skeleton {
-  background-color: #ddd;
-  margin: 10px 0;
+  background-color: hsl(0, 0%, 75%);
+  opacity: 0.7;
   border-radius: 4px;
-  animation: skeleton-loading 1s linear infinte alternate;
+  animation: skeleton-loading 1s linear 0s infinite alternate;
 }
 
-.skeleton.text {
-  width: 100%;
-  height: 12px;
+.text {
+  width: 60px;
+  height: 8px;
+  margin: 10px 0 0 2px;
 }
-
-.skeleton.subtitle {
+.subtitle {
   width: 75%;
   height: 16px;
   margin-bottom: 12px;
 }
-.skeleton.title {
+.title {
   width: 50%;
   height: 20px;
   margin-bottom: 15px;
 }
-.skeleton.avatar {
-  width: 100px;
-  height: 100px;
-  margin-bottom: 15px;
-  border-radius: 50%;
-}
-.skeleton.thumbnail {
-  width: 100px;
-  height: 100px;
-}
-@keyframes skeleton-loading {
-  0% {
-    background-color: hsl(200%, 20%, 70%);
-  }
-  100% {
-    background-color: hsl(200%, 20%, 95%);
-  }
+.avatar {
+  width: 45px;
+  height: 45px;
+  margin-bottom: 12px;
+  border-radius: 15px;
 }
 
 .skeleton__activeparams {
   display: flex;
   flex-direction: row;
+  margin-top: 10px;
   .skeleton__actpar_texts {
     display: flex;
     flex-direction: column;
   }
 }
-/* .skeleton {
-  opacity: 0.7;
-  animation: skeleton-loading 1s linear infinte alternate;
-}
 
+.skeleton__twelve {
+  height: 18.5vh;
+  width: 3.65vw;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  animation: skeleton12loading 2s linear 0s infinite alternate;
+}
+.avatar12 {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+}
+.text12 {
+  width: 30px;
+  height: 13px;
+}
+.skeleton__five {
+  display: flex;
+  flex-direction: column;
+}
+.text5 {
+  width: 65px;
+  height: 12px;
+  margin: 10px 0 0 2px;
+}
 @keyframes skeleton-loading {
   0% {
-    background-color: hsl(200%, 20%, 70%);
+    background-color: hsl(0, 0%, 70%);
   }
   100% {
-    background-color: hsl(200%, 20%, 95%);
+    background-color: hsl(0, 0%, 90%);
   }
 }
-
-.skeleton__text {
-  width: 100%;
-  height: 0.5rem;
-  margin-bottom: 0.25rem;
-  border-radius: 0.125rem;
-
-  &:last-child {
-    margin-bottom: 0%;
-    width: 80%;
+@keyframes skeleton12loading {
+  0% {
+    background-color: hsla(0, 0%, 90%, 0.2);
   }
-} */
+  100% {
+    background-color: hsla(0, 0%, 70%, 0.2);
+  }
+}
 
 /* Body Background - Frame*/
 body {
@@ -100,6 +111,7 @@ body {
 
 /* ---------- External Frame ---------- */
 .externalFrame__container {
+  font-family: "Lato", sans-serif;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -382,28 +394,6 @@ body {
             width: 12.1vw;
             height: 41vh;
           }
-
-          .parameters__Left {
-            .params_Wind_Container {
-            }
-            .params_FeelsLike_Container {
-            }
-            .params_UVIndex_Container {
-            }
-            .params_Pressure_Container {
-            }
-          }
-
-          .parameters__Right {
-            .params_Visibility_Container {
-            }
-            .params_CloudCover_Container {
-            }
-            .params_Precipitation_Container {
-            }
-            .params_Humidity_Container {
-            }
-          }
         }
       }
 
@@ -416,8 +406,6 @@ body {
         .description_Text {
           font-size: 1.2em;
           color: $font-color2-headings;
-        }
-        .description_Value {
         }
       }
 

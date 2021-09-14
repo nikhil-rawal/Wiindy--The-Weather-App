@@ -1,5 +1,6 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import "../../myStyles/frameBackground.scss"
+import Skeleton5 from "../skeletonLoading/Skeleton5"
 import { CgWebsite } from "react-icons/cg";
 import { FaLinkedinIn, FaGithub, FaTwitter, FaInstagram, FaFacebook } from "react-icons/fa";
 import { IoSnowOutline } from "react-icons/io5"
@@ -33,6 +34,13 @@ function RowRightBottomData() {
                                     })
                             })()
                         }
+                        {
+                            (() => {
+                                if (Accu5 === undefined || Accu5.length === 0 || typeof Accu5 === 'string') return (
+                                    [1, 2, 3, 4, 5].map((element, index) => { return <Skeleton5 key={index} /> })
+                                )
+                            })()
+                        }
                     </div>
 
                     <div className="fiveDayForecast__Data_Value">
@@ -44,6 +52,13 @@ function RowRightBottomData() {
                                             <span key={index}>{Math.round((element.Temperature.Maximum.Value - 32) * 5 / 9)}/{Math.round((element.Temperature.Minimum.Value - 32) * 5 / 9)}</span>
                                         )
                                     })
+                            })()
+                        }
+                        {
+                            (() => {
+                                if (Accu5 === undefined || Accu5.length === 0 || typeof Accu5 === 'string') return (
+                                    [1, 2, 3, 4, 5].map((element, index) => { return <Skeleton5 key={index} style={{ marginRight: '50px' }} /> })
+                                )
                             })()
                         }
                     </div>
