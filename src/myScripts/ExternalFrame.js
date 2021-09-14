@@ -132,7 +132,9 @@ function ExternalFrame() {
                                         })()
                                     }
                                     {
-                                        text
+                                        !weatherStack && (() => {
+                                            return text
+                                        })()
                                     }
                                 </div>
                                 <form className="rowMidTop__searchDetails" onSubmit={formSubmitHandler}>
