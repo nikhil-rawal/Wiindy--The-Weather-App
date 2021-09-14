@@ -125,14 +125,14 @@ function ExternalFrame() {
                             <div className="rowMidTop__Data">
                                 <div className="rowMidTop__placeDetails">
                                     {
-                                        (() => {
+                                        weatherStack && (() => {
                                             if (weatherStack !== null && weatherStack !== undefined && weatherStack.length !== 0 && typeof weatherStack !== 'string') {
                                                 return `${weatherStack[0].location.name}, ${weatherStack[0].location.country}`
                                             }
-                                            else {
-                                                return text
-                                            }
                                         })()
+                                    }
+                                    {
+                                        text
                                     }
                                 </div>
                                 <form className="rowMidTop__searchDetails" onSubmit={formSubmitHandler}>
