@@ -66,12 +66,6 @@ function ExternalFrame() {
         console.log(text)
     }
 
-    /*
-    (weatherStack === undefined || weatherStack === null || weatherStack.length === 0 || typeof weatherStack === 'string') ? 
-
-    : setText(prevValue => (prevValue = `${weatherStack[0].location.name}, ${weatherStack[0].location.country}`))
-    */
-
     return (
         <AccuWeather12HourContext.Provider value={accuWeather12Hour}>
             <AccuWeather5DayContext.Provider value={accuWeather5Day}>
@@ -83,7 +77,16 @@ function ExternalFrame() {
                         <div className="container__row_MidTop">
                             <div className="rowMidTop__Data">
                                 <div className="rowMidTop__placeDetails">
-                                    {text}
+                                    {
+                                        (() => {
+                                            if (weatherStack !== null && weatherStack !== undefined && weatherStack.length !== 0 && typeof weatherStack !== 'string') {
+                                                return `${weatherStack[0].location.name}, ${weatherStack[0].location.country}`
+                                            }
+                                            else {
+                                                return text
+                                            }
+                                        })()
+                                    }
                                 </div>
                                 <form className="rowMidTop__searchDetails" onSubmit={formSubmitHandler}>
                                     <div className="rowMidTop__searchBar">

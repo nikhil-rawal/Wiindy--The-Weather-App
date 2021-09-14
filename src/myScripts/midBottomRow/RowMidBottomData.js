@@ -3,6 +3,8 @@ import "../../myStyles/frameBackground.scss"
 import { AccuWeather12HourContext, WeatherStackContext } from "../ExternalFrame"
 import Forecast12 from "./Forecast12"
 import ParamsValues from "./ParamsValues"
+import SkeletonElement from "../skeletonLoading/SkeletonElement"
+import SkeletonActiveParam from "../skeletonLoading/SkeletonActiveParam"
 import { RiWindyLine } from "react-icons/ri"
 import { FaThermometerThreeQuarters, FaLeaf, FaDraftingCompass, FaRegCompass } from "react-icons/fa"
 import { FiSun } from "react-icons/fi"
@@ -56,7 +58,7 @@ function RowMidBottomData() {
                                     {
                                         (stateweatherStackData === null) && (() => {
                                             return (
-                                                <>32</>
+                                                console.log(<SkeletonActiveParam />)
                                             )
 
                                         })()
@@ -89,6 +91,11 @@ function RowMidBottomData() {
 
                                             <ParamsValues bgColor="hsla(151, 75%, 59%, 1)" icon={<FaLeaf size={23} />} value1="Air Pressure" value2={`${stateweatherStackData[0].current.pressure} MB`} />
                                         </>
+                                    )
+                                }
+                                else {
+                                    return (
+                                        <SkeletonElement type="thumbnail" />
                                     )
                                 }
                             })()
