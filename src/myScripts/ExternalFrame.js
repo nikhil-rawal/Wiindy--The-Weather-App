@@ -140,8 +140,7 @@ function ExternalFrame() {
                         <div className="container__row_MidTop">
                             <div className="rowMidTop__Data">
                                 <div className="rowMidTop__placeDetails">
-
-                                    {console.log(weatherStack)}{
+                                    {
 
                                         !weatherStack && (() => {
                                             return text
