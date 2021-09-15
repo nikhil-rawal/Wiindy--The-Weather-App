@@ -18,10 +18,11 @@ function ExternalFrame() {
 
     // nikhil const accuWeatherKey = '6fJHLNcuVZzxYAl1kElDvOcwOZrKGych';
     //const accuWeatherKey = '0lOiuGFXOPnlXrGVatvupDjjaGVRdvG2';
-    const accuWeatherKey = '6fJHLNcuVZzxYAl1kElDvOcwOZrKGych';
-    const accuWeatherBase = 'http://dataservice.accuweather.com/';
+    const accuWeatherKey = '0lOiuGFXOPnlXrGVatvupDjjaGVRdvG2';
+    const accuWeatherBase = 'https://cors-anywhere.herokuapp.com/http://dataservice.accuweather.com/';
     const accuWeatherURLPart = `?apikey=${accuWeatherKey}`;
-    const weatherStackKey = 'f35cc61b81d20fdddee9ad30e0fe284a';
+    const weatherStackKey = '9a001b905661a5afedc40c358f70b468';
+    // const second weatherStackKey = 'f35cc61b81d20fdddee9ad30e0fe284a';
 
     const [text, setText] = useState("Enter City Name");
     const [accuWeather12Hour, setaccuWeather12Hour] = useState([]);
@@ -29,42 +30,6 @@ function ExternalFrame() {
     const [weatherStack, setweatherStack] = useState();
     const [error, seterror] = useState(null);
 
-    function handleError() {
-
-    }
-
-    async function formSubmitHandler(event) {
-        event.preventDefault();
-        /* ---------- Accuweather ---------- */
-        //Calling to get City Key
-        try {
-            const reqAccuCityID = await Axios.get(`${accuWeatherBase}locations/v1/cities/search${accuWeatherURLPart}&q=${text}`);
-            const accessKey = reqAccuCityID.data[0].Key;
-
-            /* ---------- WeatherStack ---------- */
-            const forecastweatherStack = `http://api.weatherstack.com/current?access_key=${weatherStackKey}&query=${text}`;
-            const reqWeatherStackAPI = await Axios.get(forecastweatherStack);
-            setweatherStack([reqWeatherStackAPI.data]);
-
-            /* ----- Passing Data - Handle Accuweather Key and data ----- */
-            handleAccuKey(accessKey);
-        }
-        catch (err) {
-            if (err.response) {
-                console.error(`Error occured. ${err.response}`)
-                seterror([err.response])
-            } else if (err.request) {
-                console.error(`Error occured. ${err.request}`)
-                seterror([err.request])
-            } else {
-                console.error(`Error occured. ${err}`)
-                seterror([err])
-            }
-
-            handleError();
-        }
-
-    };
 
     async function handleAccuKey(accessKey) {
         try {
@@ -95,9 +60,60 @@ function ExternalFrame() {
                 console.error(`Error occured. ${err}`)
                 seterror([err])
             }
-            handleError();
         }
     }
+
+    async function handleweather() {
+        try {
+            /* ---------- WeatherStack ---------- */
+            const forecastweatherStack = `https://cors-anywhere.herokuapp.com/http://api.weatherstack.com/current?access_key=${weatherStackKey}&query=${text}`;
+            const reqWeatherStackAPI = await Axios.get(forecastweatherStack);
+            setweatherStack([reqWeatherStackAPI.data]);
+        }
+        catch (err) {
+            if (err.response) {
+                console.error(`Error occured. ${err.response}`)
+                seterror([err.response])
+            } else if (err.request) {
+                console.error(`Error occured. ${err.request}`)
+                seterror([err.request])
+            } else {
+                console.error(`Error occured. ${err}`)
+                seterror([err])
+            }
+
+        }
+    }
+
+    async function formSubmitHandler(event) {
+        event.preventDefault();
+        /* ---------- Accuweather ---------- */
+        //Calling to get City Key
+        try {
+            const reqAccuCityID = await Axios.get(`${accuWeatherBase}locations/v1/cities/search${accuWeatherURLPart}&q=${text}`);
+            const accessKey = reqAccuCityID.data[0].Key;
+
+            /* ----- Passing Data - Handle Accuweather Key and data ----- */
+            handleAccuKey(accessKey);
+            handleweather();
+        }
+        catch (err) {
+            if (err.response) {
+                console.error(`Error occured. ${err.response}`)
+                seterror([err.response])
+            } else if (err.request) {
+                console.error(`Error occured. ${err.request}`)
+                seterror([err.request])
+            } else {
+                console.error(`Error occured. ${err}`)
+                seterror([err])
+            }
+
+        }
+
+    };
+
+
 
     function inputChangeHandler(e) {
         setText(prevValue => (prevValue = e.target.value))
@@ -124,7 +140,20 @@ function ExternalFrame() {
                         <div className="container__row_MidTop">
                             <div className="rowMidTop__Data">
                                 <div className="rowMidTop__placeDetails">
-                                    {text}
+
+                                    {console.log(weatherStack)}{
+
+                                        !weatherStack && (() => {
+                                            return text
+                                        })()
+                                    }{
+                                        weatherStack && (() => {
+                                            if (weatherStack !== null && weatherStack !== undefined && weatherStack.length !== 0 && typeof weatherStack !== 'string') {
+                                                return `${weatherStack[0].location.name}, ${weatherStack[0].location.country}`
+                                            }
+                                        })()
+                                    }
+
                                 </div>
                                 <form className="rowMidTop__searchDetails" onSubmit={formSubmitHandler}>
                                     <div className="rowMidTop__searchBar">
