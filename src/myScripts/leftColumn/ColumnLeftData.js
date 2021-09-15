@@ -3,6 +3,7 @@ import { WeatherStackContext } from "../ExternalFrame"
 import "../../myStyles/frameBackground.scss"
 import { MdDashboard } from "react-icons/md";
 import { FaMapMarkerAlt, FaLightbulb, FaRegLightbulb } from "react-icons/fa";
+import { BsCodeSlash } from "react-icons/bs";
 
 function ColumnLeftData() {
 
@@ -25,19 +26,20 @@ function ColumnLeftData() {
         targ = "_blank";
     }
 
-    function lightsOff(e) {
+    /* function lightsOff(e) {
         e.target.style.color = "hsl(269, 99%, 61%)";
     }
     function lightsOn(e) {
         e.target.style.color = "hsl(269, 99%, 61%)";
-    }
+    } */
 
     return (
         <div className="columnLeftData__Button">
             <MdDashboard size={42} style={{ color: "hsl(269, 99%, 61%)" }} />
-            <a href={url} target={targ} style={{ margin: 0 }}><FaMapMarkerAlt className="map__icon" size={42} /></a>
-            <FaLightbulb onClick={lightsOff} className="lights_Off" size={42} />
-            <FaRegLightbulb onClick={lightsOn} className="lights_On" size={42} />
+            <a href={url} target={targ} style={{ margin: 0 }} onMouseOver={(e) => { e.target.style.color = "hsl(269, 99%, 61%)" }} onMouseOut={(e) => { e.target.style.color = "hsla(251, 7%, 71%, 1)" }}><FaMapMarkerAlt className="map__icon" size={42} /></a>
+            <a href="https://github.com/placidnikz/Wiindy--The-Weather-App" target="_blank" style={{ margin: 0 }} onMouseOver={(e) => { e.target.style.color = "hsl(269, 99%, 61%)" }} onMouseOut={(e) => { e.target.style.color = "hsla(251, 7%, 71%, 1)" }}><BsCodeSlash className="get__code" size={42} /></a>
+            {/* <FaLightbulb onClick={lightsOff} className="lights_Off" size={42} />
+            <FaRegLightbulb onClick={lightsOn} className="lights_On" size={42} /> */}
         </div>
     )
 }
