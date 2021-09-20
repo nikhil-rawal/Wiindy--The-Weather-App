@@ -72,7 +72,7 @@ I have used applications and API in order to get the weather details of a locati
 
 ## Application and Endpoints
 
-- Openweathermap <a href="https://openweathermap.org/" target="_blank"> <img src="https://openweathermap.org/themes/openweathermap/assets/img/logo_white_cropped.png" width="250" height="35"/> </a>
+- Openweathermap <a href="https://openweathermap.org/" target="_blank"> <img src="https://openweathermap.org/themes/openweathermap/assets/img/logo_white_cropped.png" width="250" height="50"/> </a>
   <br/>
   Real time and historical World weather data API. Retrieve instant, accurate weather information for any location in the world in lightweight JSON format.
     - Parameters Used
