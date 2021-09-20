@@ -49,7 +49,7 @@ It is a website which allows the users to access the weather information for an 
 <br/>
 <br/>
 
-- Axios: Axios is a library used to make requests to the API, return data from API, and do something when data is received. I used axios in addition to async await method to make the API request to Weatherstack and Accuweather endpoints Asynchronously.
+- Axios: Axios is a library used to make requests to the API, return data from API, and do something when data is received. I used axios in addition to async await method to make the API request to Openweathermap and Accuweather endpoints Asynchronously.
     - Axios.Get: This command performs HTTP request.
     - Axios.Spread: This command is used to spread the array of received arguments into multiple arguments.
     - Axios.All: This command is used to make concurrent HTTP requests.
@@ -72,7 +72,7 @@ I have used applications and API in order to get the weather details of a locati
 
 ## Application and Endpoints
 
-- Weatherstack <a href="https://weatherstack.com/" target="_blank"> <img src="https://weatherstack.com/site_images/weatherstack_logo_footer.png" width="250" height="35"/> </a>
+- Openweathermap <a href="https://openweathermap.org/" target="_blank"> <img src="https://openweathermap.org/themes/openweathermap/assets/img/logo_white_cropped.png" width="250" height="35"/> </a>
   <br/>
   Real time and historical World weather data API. Retrieve instant, accurate weather information for any location in the world in lightweight JSON format.
     - Parameters Used
