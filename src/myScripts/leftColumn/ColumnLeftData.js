@@ -20,8 +20,8 @@ function ColumnLeftData() {
     let targ = "_self";
 
     if (stateweatherStackData !== null && stateweatherStackData !== undefined && stateweatherStackData.length !== 0 && typeof stateweatherStackData !== 'string') {
-        lat = stateweatherStackData[0].location.lat;
-        lon = stateweatherStackData[0].location.lon;
+        lat = stateweatherStackData.coord.lat;
+        lon = stateweatherStackData.coord.lon;
         url = `https://www.google.com/maps/@${lat},${lon},11z`;
         targ = "_blank";
     }

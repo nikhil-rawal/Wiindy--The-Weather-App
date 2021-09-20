@@ -18,16 +18,16 @@ function ExternalFrame() {
 
     // nikhil const accuWeatherKey = '6fJHLNcuVZzxYAl1kElDvOcwOZrKGych';
     //const accuWeatherKey = '0lOiuGFXOPnlXrGVatvupDjjaGVRdvG2';
-    const accuWeatherKey = '6fJHLNcuVZzxYAl1kElDvOcwOZrKGych';
+    const accuWeatherKey = '0lOiuGFXOPnlXrGVatvupDjjaGVRdvG2';
     const accuWeatherBase = 'http://dataservice.accuweather.com/';
     const accuWeatherURLPart = `?apikey=${accuWeatherKey}`;
-    const weatherStackKey = '9a001b905661a5afedc40c358f70b468';
+    const weatherStackKey = '7b59b8f46e2ae973e8bbf1aa9e74d187';
     // const second weatherStackKey = 'f35cc61b81d20fdddee9ad30e0fe284a';
 
     const [text, setText] = useState("Enter City Name");
     const [accuWeather12Hour, setaccuWeather12Hour] = useState([]);
     const [accuWeather5Day, setaccuWeather5Day] = useState([]);
-    const [weatherStack, setweatherStack] = useState();
+    const [weatherStack, setweatherStack] = useState([]);
     const [error, seterror] = useState(null);
 
 
@@ -63,10 +63,12 @@ function ExternalFrame() {
         }
     }
 
-    async function handleweather() {
+    async function handleweather(lat, lon) {
         try {
-            /* ---------- WeatherStack ---------- */
-            const forecastweatherStack = `http://api.weatherstack.com/current?access_key=${weatherStackKey}&query=${text}`;
+            /* ---------- WeatherStack ---------- 
+            api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
+            */
+            const forecastweatherStack = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherStackKey}`;
             const reqWeatherStackAPI = await Axios.get(forecastweatherStack);
             setweatherStack([reqWeatherStackAPI.data]);
         }
@@ -92,18 +94,14 @@ function ExternalFrame() {
         try {
             const reqAccuCityID = await Axios.get(`${accuWeatherBase}locations/v1/cities/search${accuWeatherURLPart}&q=${text}`);
             const accessKey = reqAccuCityID.data[0].Key;
+            const latitude = reqAccuCityID.data[0].GeoPosition.Latitude;
+            const longitude = reqAccuCityID.data[0].GeoPosition.Longitude;
+
             /* ----- Passing Data - Handle Accuweather Key and data ----- */
             handleAccuKey(accessKey);
-            handleweather();
+            /* ----- Passing Data - Handle Weatherstack ----- */
+            handleweather(latitude, longitude);
         }
-        /*
-        {
-    method: 'get',
-    mode: 'no-cors',
-    headers: {
-       'Access-Control-Allow-Origin' : '*'
-    }
-     */
         catch (err) {
             if (err.response) {
                 console.error(`Error occured. ${err.response}`)
@@ -129,7 +127,7 @@ function ExternalFrame() {
     return (
         <AccuWeather12HourContext.Provider value={accuWeather12Hour}>
             <AccuWeather5DayContext.Provider value={accuWeather5Day}>
-                <WeatherStackContext.Provider value={weatherStack}>
+                <WeatherStackContext.Provider value={weatherStack[0]}>
                     {
                         error && (() => {
                             if (error !== undefined && error.length !== 0 && error !== null) {
@@ -155,7 +153,7 @@ function ExternalFrame() {
                                     }{
                                         weatherStack && (() => {
                                             if (weatherStack !== null && weatherStack !== undefined && weatherStack.length !== 0 && typeof weatherStack !== 'string') {
-                                                return `${weatherStack[0].location.name}, ${weatherStack[0].location.country}`
+                                                return `${weatherStack[0].name}, ${weatherStack[0].sys.country}`
                                             }
                                         })()
                                     }

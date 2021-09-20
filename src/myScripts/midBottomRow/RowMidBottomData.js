@@ -12,7 +12,7 @@ import { FiSun } from "react-icons/fi"
 import { GiFallingStar, GiWorld } from "react-icons/gi"
 import { WiCloudy, WiHumidity } from "react-icons/wi"
 import { BiWater } from "react-icons/bi"
-import { ImClock } from "react-icons/im"
+import { BsBookmarkCheck } from "react-icons/bs"
 
 
 function RowMidBottomData() {
@@ -30,7 +30,6 @@ function RowMidBottomData() {
     useEffect(() => {
         setweatherStackData(WeatherStack);
     }, [WeatherStack])
-
 
     return (
         <div className="rowMidBottom__Data">
@@ -50,7 +49,7 @@ function RowMidBottomData() {
                                             if (stateweatherStackData !== undefined && stateweatherStackData.length !== 0 && typeof stateweatherStackData !== 'string') {
                                                 return (
                                                     <>
-                                                        {stateweatherStackData[0].current.temperature}<sup>°<strong>c</strong></sup>
+                                                        {Math.round(stateweatherStackData.main.temp - 273.15)}<sup>°<strong>c</strong></sup>
                                                     </>
                                                 )
                                             }
@@ -84,13 +83,14 @@ function RowMidBottomData() {
                                 if (stateweatherStackData !== undefined && stateweatherStackData.length !== 0 && typeof stateweatherStackData !== 'string') {
                                     return (
                                         <>
-                                            <ParamsValues key="child1" bgColor="hsla(266, 99%, 59%, 1)" icon={<RiWindyLine size={23} />} value1={`${stateweatherStackData[0].current.wind_degree}°${stateweatherStackData[0].current.wind_dir}`} value2={`${stateweatherStackData[0].current.wind_speed} Km/hr`} />
+                                            <ParamsValues key="hsla(266, 99%, 59%, 1)" bgColor="hsla(266, 99%, 59%, 1)" icon={<RiWindyLine size={23} />} value1={`Wind ${stateweatherStackData.wind.deg}°`} value2={`${parseFloat(stateweatherStackData.wind.speed * 3.6).toFixed(2)} Km/hr`} />
 
-                                            <ParamsValues key="child2" bgColor="hsla(29, 100%, 61%, 1)" icon={<FaThermometerThreeQuarters size={23} />} value1="Feels Like" value2={`${stateweatherStackData[0].current.feelslike}°c`} />
+                                            <ParamsValues key="hsla(29, 100%, 61%, 1)" bgColor="hsla(29, 100%, 61%, 1)" icon={<FaThermometerThreeQuarters size={23} />} value1="Feels Like" value2={`${Math.round(stateweatherStackData.main.feels_like - 273.15)}°c`} />
 
-                                            <ParamsValues key="child3" bgColor="hsla(49, 100%, 50%, 1)" icon={<FiSun size={27} />} value1="UV Index" value2={stateweatherStackData[0].current.uv_index} />
+                                            <ParamsValues key="hsla(108, 100%, 68%, 1)" bgColor="hsla(108, 100%, 68%, 1)" icon={<BiWater size={26} />} value1="Min Temp" value2={`${Math.round(stateweatherStackData.main.temp_min - 273.15)}°c`} />
 
-                                            <ParamsValues key="child4" bgColor="hsla(151, 75%, 59%, 1)" icon={<FaLeaf size={23} />} value1="Air Pressure" value2={`${stateweatherStackData[0].current.pressure} MB`} />
+                                            <ParamsValues key="hsla(49, 100%, 50%, 1)" bgColor="hsla(49, 100%, 50%, 1)" icon={<FiSun size={27} />} value1="Max Temp" value2={`${Math.round(stateweatherStackData.main.temp_max - 273.15)}°c`} />
+
                                         </>
                                     )
                                 }
@@ -115,13 +115,13 @@ function RowMidBottomData() {
                                 if (stateweatherStackData !== undefined && stateweatherStackData.length !== 0 && typeof stateweatherStackData !== 'string') {
                                     return (
                                         <>
-                                            <ParamsValues key="child1" bgColor="hsla(176, 100%, 66%, 1)" icon={<GiFallingStar size={26} />} value1="Visibility" value2={`${stateweatherStackData[0].current.visibility} Km/hr`} />
+                                            <ParamsValues key="hsla(176, 100%, 66%, 1)" bgColor="hsla(176, 100%, 66%, 1)" icon={<GiFallingStar size={26} />} value1="Visibility" value2={`${stateweatherStackData.visibility / 1000} Km`} />
 
-                                            <ParamsValues key="child2" bgColor="hsla(205, 100%, 64%, 1)" icon={<WiCloudy size={35} />} value1="Cloud Cover" value2={`${stateweatherStackData[0].current.cloudcover} %`} />
+                                            <ParamsValues key="hsla(205, 100%, 64%, 1)" bgColor="hsla(205, 100%, 64%, 1)" icon={<WiCloudy size={35} />} value1="Cloud Cover" value2={`${stateweatherStackData.clouds.all} %`} />
 
-                                            <ParamsValues key="child3" bgColor="hsla(108, 100%, 68%, 1)" icon={<BiWater size={26} />} value1="Precipitation" value2={`${stateweatherStackData[0].current.precip} MM`} />
+                                            <ParamsValues key="hsla(151, 75%, 59%, 1)" bgColor="hsla(151, 75%, 59%, 1)" icon={<FaLeaf size={23} />} value1="Air Pressure" value2={`${stateweatherStackData.main.pressure} MB`} />
 
-                                            <ParamsValues key="child4" bgColor="hsla(245, 100%, 64%, 1)" icon={<WiHumidity size={30} />} value1="Humidity" value2={`${stateweatherStackData[0].current.humidity} %`} />
+                                            <ParamsValues key="hsla(245, 100%, 64%, 1)" bgColor="hsla(245, 100%, 64%, 1)" icon={<WiHumidity size={30} />} value1="Humidity" value2={`${stateweatherStackData.main.humidity} %`} />
                                         </>
                                     )
                                 }
@@ -151,13 +151,13 @@ function RowMidBottomData() {
                             if (stateweatherStackData !== undefined && stateweatherStackData.length !== 0 && typeof stateweatherStackData !== 'string') {
                                 return (
                                     <>
-                                        <ParamsValues key="child1" bgColor="hsla(0, 100%, 59%, 1)" icon={<FaDraftingCompass size={22} />} value1="Latitude" value2={`${stateweatherStackData[0].location.lat}°`} />
+                                        <ParamsValues key="hsla(0, 100%, 59%, 1)" bgColor="hsla(0, 100%, 59%, 1)" icon={<FaDraftingCompass size={22} />} value1="Latitude" value2={`${stateweatherStackData.coord.lat}°`} />
 
-                                        <ParamsValues key="child2" bgColor="hsla(234, 98%, 61%, 1)" icon={<FaRegCompass size={22} />} value1="Longitude" value2={`${stateweatherStackData[0].location.lon}°`} />
+                                        <ParamsValues key="hsla(234, 98%, 61%, 1)" bgColor="hsla(234, 98%, 61%, 1)" icon={<FaRegCompass size={22} />} value1="Longitude" value2={`${stateweatherStackData.coord.lon}°`} />
 
-                                        <ParamsValues key="child3" bgColor="hsla(299, 100%, 75%, 1)" icon={<GiWorld size={22} />} value1="Time Zone" value2={`${stateweatherStackData[0].location.utc_offset} UTC`} />
+                                        <ParamsValues key="hsla(299, 100%, 75%, 1)" bgColor="hsla(299, 100%, 75%, 1)" icon={<GiWorld size={22} />} value1="Time Zone" value2={`${(stateweatherStackData.timezone) / 3600} UTC`} />
 
-                                        <ParamsValues key="child4" bgColor="hsla(346, 99%, 60%, 1)" icon={<ImClock size={22} />} value1="Local Time" value2={`${stateweatherStackData[0].location.localtime.slice(11, 16)}`} />
+                                        <ParamsValues key="hsla(346, 99%, 60%, 1)" bgColor="hsla(346, 99%, 60%, 1)" icon={<BsBookmarkCheck size={22} />} value1="Condition" value2={`${stateweatherStackData.weather[0].main}`} />
                                     </>
                                 )
                             }
