@@ -6,7 +6,7 @@ function RowRightTopData() {
     return (
         <div className="rowRightTop__Data">
             <FcBusinessman size={32} className="pacmanCreator" />
-            <h1 className="userCreator">Nikhil Rawal</h1>
+            <span className="userCreator">Nikhil Rawal</span>
         </div>
     )
 }

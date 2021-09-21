@@ -139,6 +139,26 @@ function ExternalFrame() {
                         })()
                     }
                     <div className="externalFrame__container">
+
+                        {/* <input id="toggle" type="checkbox"></input>
+                        <label className="toggle-container" for="toggle">
+                            <span className="button button-toggle"></span>
+                        </label>
+                        <nav className="nav">
+                            <a className="nav-item" href="">Dashboard</a>
+                            <a className="nav-item" href="">Location</a>
+                            <a className="nav-item" href="">Description</a>
+                            <a className="nav-item" href="">Temperature</a>
+                            <a className="nav-item" href="">Active Parameters</a>
+                            <a className="nav-item" href="">Description</a>
+                            <a className="nav-item" href="">12-Hour Forecast</a>
+                            <a className="nav-item" href="">5-Day Forecast</a>
+                            <a className="nav-item" href="">Data Providers</a>
+                            <a className="nav-item" href="">Contact Me</a>
+                        </nav>
+
+                        <div className="dummy-content"></div> */}
+
                         <div className="container__column_Left">
                             <ColumnLeftData />
                         </div>

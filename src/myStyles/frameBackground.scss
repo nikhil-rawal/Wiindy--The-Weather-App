@@ -15,7 +15,10 @@ $font-color2-paramsValue: hsla(256, 12%, 37%, 1);
 $white-color-dim: #ffffffd1;
 
 /* SKELETON LOADING */
-
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+}
 .skeleton {
   background-color: hsl(0, 0%, 75%);
   opacity: 0.7;
@@ -107,6 +110,13 @@ body {
     $main-color1-day 30%,
     $main-color2-day 30%
   );
+  @media (max-width: 850px) {
+    background: linear-gradient(
+      to right,
+      $main-color1-day 70%,
+      $main-color2-day 70%
+    );
+  }
 }
 
 /* ---------- External Frame ---------- */
@@ -116,7 +126,6 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
   display: grid;
 
   .container__column_Left,
@@ -177,6 +186,16 @@ body {
 
       * {
         margin-top: 70%;
+
+        @media (max-width: 1024px) {
+          margin-top: 120%;
+        }
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .icon__Left {
+        size: 36;
       }
     }
   }
@@ -199,6 +218,10 @@ body {
         color: $font-color1-day;
         width: 70%;
         font-size: 1.7em;
+
+        @media (max-width: 1024px) {
+          font-size: 1.5em;
+        }
       }
 
       .rowMidTop__searchDetails {
@@ -264,6 +287,10 @@ body {
         .currentTemp_Text {
           color: $font-color1-headings;
           font-size: 1.3em;
+
+          @media (max-width: 1024px) {
+            font-size: 1.1em;
+          }
         }
 
         .currentTemp_Value {
@@ -275,14 +302,22 @@ body {
             height: 165px;
             border-radius: 50%;
             background-color: rgba(72, 255, 0, 0.8);
-            // background: linear-gradient(
-            //   to right,
-            //   rgba(72, 255, 0, 0.8) 90%,
-            //   rgba(72, 255, 0, 0.1)
-            // );
             display: flex;
             align-items: center;
             justify-content: center;
+
+            @media (max-width: 1024px) {
+              height: 150px;
+              width: 150px;
+            }
+            @media (max-width: 900px) {
+              height: 130px;
+              width: 130px;
+            }
+            @media (max-width: 850px) {
+              height: 165px;
+              width: 165px;
+            }
 
             .tempVal_outerCircle {
               width: 145px;
@@ -294,8 +329,20 @@ body {
               align-items: center;
               justify-content: center;
 
+              @media (max-width: 1024px) {
+                height: 130px;
+                width: 130px;
+              }
+              @media (max-width: 900px) {
+                height: 110px;
+                width: 110px;
+              }
+              @media (max-width: 850px) {
+                height: 145px;
+                width: 145px;
+              }
+
               .animationCircle {
-                //margin-top: -146px;
                 visibility: hidden;
                 position: absolute;
                 width: 9px;
@@ -313,9 +360,32 @@ body {
                 align-items: center;
                 justify-content: center;
 
+                @media (max-width: 1024px) {
+                  height: 115px;
+                  width: 115px;
+                }
+                @media (max-width: 900px) {
+                  height: 95px;
+                  width: 95px;
+                }
+                @media (max-width: 850px) {
+                  height: 125px;
+                  width: 125px;
+                }
+
                 .tempVal {
                   color: hsla(265, 28%, 27%, 1);
                   font-size: 4em;
+
+                  @media (max-width: 1024px) {
+                    font-size: 3.5em;
+                  }
+                  @media (max-width: 900px) {
+                    font-size: 3em;
+                  }
+                  @media (max-width: 850px) {
+                    font-size: 4em;
+                  }
                   sup {
                     font-size: 50%;
                   }
@@ -327,19 +397,31 @@ body {
               .animationCircle {
                 visibility: visible;
                 animation: animate 3s linear infinite;
+
+                @media (max-width: 900px) {
+                  visibility: hidden;
+                }
               }
             }
             @keyframes animate {
               from {
                 transform: rotate(0deg) translateX(72px) rotate(0deg);
+
+                @media (max-width: 1024px) {
+                  transform: rotate(0deg) translateX(40px) rotate(0deg);
+                }
               }
               to {
                 transform: rotate(360deg) translateX(72px) rotate(-360deg);
+                @media (max-width: 1024px) {
+                  transform: rotate(360deg) translateX(40px) rotate(-360deg);
+                }
               }
             }
           }
         }
       }
+
       .params_Container {
         display: flex;
         flex-direction: row;
@@ -353,6 +435,23 @@ body {
           align-items: center;
           justify-content: center;
 
+          @media (max-width: 1024px) {
+            width: 40px;
+            height: 40px;
+          }
+          @media (max-width: 900px) {
+            width: 38px;
+            height: 38px;
+          }
+          @media (max-width: 850px) {
+            width: 45px;
+            height: 45px;
+          }
+          @media (max-width: 650px) {
+            height: 40px;
+            width: 40px;
+          }
+
           .param_Icon {
             color: white;
           }
@@ -364,11 +463,35 @@ body {
           .param_Value1 {
             color: $font-color1-paramsHead;
             font-size: 0.9em;
+            @media (max-width: 1024px) {
+              font-size: 0.8em;
+            }
+            @media (max-width: 900px) {
+              font-size: 0.7em;
+            }
+            @media (max-width: 850px) {
+              font-size: 0.95em;
+            }
+            @media (max-width: 650px) {
+              font-size: 0.85em;
+            }
           }
           .param_Value2 {
             margin-top: 2px;
             color: $font-color2-paramsValue;
             font-size: 1.1em;
+            @media (max-width: 1024px) {
+              font-size: 0.9em;
+            }
+            @media (max-width: 900px) {
+              font-size: 0.8em;
+            }
+            @media (max-width: 850px) {
+              font-size: 1.1em;
+            }
+            @media (max-width: 650px) {
+              font-size: 0.95em;
+            }
           }
         }
       }
@@ -480,15 +603,29 @@ body {
       justify-content: center;
       align-items: center;
       color: $font-color2-day;
+      box-sizing: border-box;
 
+      .pacmanCreator {
+        margin-top: 10%;
+      }
       .userCreator {
-        margin-left: 10%;
+        margin-top: 10%;
+
+        font-size: 2em;
+
+        @media (max-width: 1024px) {
+          font-size: 1.8em;
+        }
       }
     }
   }
 
   /* ---------- Right Bottom Row ---------- */
   .container__row_RightBottom {
+    @media (max-width: 850px) {
+      margin-bottom: 8%;
+    }
+
     grid-area: rightBottom;
     border-radius: 0px 0px 8px 0px;
 
@@ -507,16 +644,33 @@ body {
           display: flex;
           flex-direction: row;
           width: 19vw;
+          @media (max-width: 850px) {
+            width: 50vw;
+          }
 
           .fiveDayForecast__Header_Name {
             font-size: 1.2em;
             color: $font-color1-headings;
             width: 14vw;
+            @media (max-width: 850px) {
+              font-size: 1.7em;
+              width: 30vw;
+            }
+            @media (max-width: 650px) {
+              font-size: 1.5em;
+            }
           }
           .fiveDayForecast__Header_Value {
             font-size: 1.15em;
             color: $font-color1-headings;
             width: 5vw;
+            @media (max-width: 850px) {
+              font-size: 1.5em;
+              width: 20vw;
+            }
+            @media (max-width: 650px) {
+              font-size: 1.3em;
+            }
 
             display: block;
             sup {
@@ -532,17 +686,34 @@ body {
           font-size: 1.1em;
           width: 19vw;
 
+          @media (max-width: 850px) {
+            width: 55vw;
+          }
+
           .fiveDayForecast__Data_Name {
             display: flex;
             flex-direction: column;
             color: $font-color1-paramsHead;
             width: 14vw;
+            @media (max-width: 850px) {
+              font-size: 1.6em;
+              width: 30vw;
+            }
+            @media (max-width: 650px) {
+              font-size: 1.4em;
+            }
           }
           .fiveDayForecast__Data_Value {
             display: flex;
             flex-direction: column;
             color: $font-color2-paramsValue;
             width: 5vw;
+            @media (max-width: 850px) {
+              font-size: 1.4em;
+            }
+            @media (max-width: 650px) {
+              font-size: 1.3em;
+            }
           }
         }
       }
@@ -556,6 +727,16 @@ body {
         .providers_Text {
           color: $font-color2-headings;
           font-size: 1.2em;
+
+          @media (max-width: 1024px) {
+            font-size: 1em;
+          }
+          @media (max-width: 850px) {
+            font-size: 1.6em;
+          }
+          @media (max-width: 650px) {
+            font-size: 1.4em;
+          }
         }
         .providers_Value {
           color: $font-color2-paramsValue;
@@ -564,6 +745,14 @@ body {
           flex-direction: row;
           align-content: center;
           padding: 3px;
+
+          @media (max-width: 850px) {
+            margin-top: 2.5vh;
+            font-size: 1.5em;
+          }
+          @media (max-width: 650px) {
+            font-size: 1.3em;
+          }
         }
 
         .provider_aweather {
@@ -580,17 +769,21 @@ body {
 
       .rowRightBottom__Data__Contact {
         display: grid;
-        // justify-content: center;
-        // align-content: center;
         height: 30vh;
         padding: 1vh 1.75vw 0vh 1.75vw;
-
         text-align: center;
+
+        @media (max-width: 850px) {
+          height: 35vh;
+        }
 
         a {
           font-size: 2em;
           &:hover {
             transform: scale(1.1);
+          }
+          @media (max-width: 850px) {
+            font-size: 2.5em;
           }
         }
         a,
@@ -605,7 +798,9 @@ body {
           grid-area: contactMeText;
           color: $font-color2-paramsValue;
           font-size: 1.2em;
-          // padding: 10% 0 10% 0;
+          @media (max-width: 850px) {
+            font-size: 1.5em;
+          }
         }
         .contactMe__Website {
           grid-area: contactMeWebsite;
@@ -632,6 +827,9 @@ body {
           grid-area: contactMeCopyright;
           color: $font-color1-paramsHead;
           font-size: 0.8em;
+          @media (max-width: 850px) {
+            font-size: 1em;
+          }
           // padding: 5% 0 0% 0;
         }
 
@@ -651,4 +849,174 @@ body {
     "allLeft midBottom rightBottom"
     "allLeft midBottom rightBottom"
     "allLeft midBottom rightBottom";
+
+  /* Media Query - 850px */
+  @media (max-width: 850px) {
+    display: flex;
+    flex-direction: column;
+    top: 0%;
+    left: 0%;
+    position: unset;
+    transform: unset;
+    width: 90vw;
+    margin-left: 3vw;
+
+    .container__column_Left,
+    .container__row_MidTop,
+    .container__row_MidBottom,
+    .container__row_RightTop,
+    .container__row_RightBottom {
+      width: 100%;
+      box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+
+      // margin-left: 5vw;
+      height: unset;
+    }
+
+    .container__column_Left {
+      border-radius: 0px;
+      height: 8.5vh;
+      overflow: hidden;
+      background-color: #ffffff;
+      background-blend-mode: overlay;
+      position: fixed;
+      bottom: 0;
+      z-index: 5;
+
+      .columnLeftData__Button {
+        flex-direction: row;
+        justify-content: space-evenly;
+        padding: 0;
+
+        * {
+          margin-top: 1.75vh;
+        }
+      }
+    }
+
+    .container__row_MidTop {
+      height: 9vh;
+
+      .rowMidTop__Data {
+        .rowMidTop__placeDetails {
+          font-size: 1.8em;
+        }
+      }
+    }
+
+    .container__row_MidBottom {
+      .rowMidBottom__Data {
+        width: 100%;
+        height: 100%;
+        height: unset;
+        margin: 5% 0;
+        justify-content: center;
+        align-items: center;
+        grid-column-gap: 0%;
+
+        .data__currentTemp_Container {
+          width: 25vw;
+          margin-left: 7.5vw;
+          margin-top: -1vh;
+          @media (max-width: 650px) {
+            margin-top: -1vh;
+          }
+
+          .currentTemp_Text {
+            font-size: 1.8em;
+            @media (max-width: 650px) {
+              font-size: 1.5em;
+            }
+          }
+        }
+
+        .data__activeParameters_Container {
+          width: 40vw;
+          .activeParameters_Text {
+            font-size: 1.6em;
+            @media (max-width: 650px) {
+              font-size: 1.3em;
+            }
+          }
+          .activeParameters_Value {
+            // justify-content: space-evenly;
+            .parameters__Left,
+            .parameters__Right {
+              display: flex;
+              flex-direction: column;
+              width: 19.5vw;
+            }
+          }
+        }
+
+        .data__description_Container {
+          width: 25vw;
+          .description_Text {
+            font-size: 1.6em;
+            @media (max-width: 650px) {
+              font-size: 1.3em;
+            }
+          }
+        }
+        .data__forecast12Hour_Container {
+          width: 90vw;
+          margin-left: 7.5vw;
+
+          .forecast12Hour_Text {
+            font-size: 1.6em;
+            @media (max-width: 650px) {
+              font-size: 1.4em;
+            }
+          }
+          .forecast12Hour_Value {
+            width: 85vw;
+
+            .f12__container {
+              height: 20vh;
+              width: 5.75vw;
+              @media (max-width: 650px) {
+                width: 5.25vw;
+                height: 17vh;
+              }
+              .f12__time {
+                font-size: 1.15em;
+                @media (max-width: 650px) {
+                  font-size: 0.9em;
+                }
+              }
+              .f12__temp {
+                font-size: 1.25em;
+                @media (max-width: 650px) {
+                  font-size: 1em;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .container__row_RightTop {
+      display: none;
+      visibility: hidden;
+    }
+
+    .container__row_RightBottom {
+      padding-top: 5vh;
+      .rowRightBottom__Data {
+        .rowRightBottom__Data__FiveDayForecast {
+          width: 65vw;
+          margin-left: 2.5vw;
+        }
+
+        .data__providers_Container {
+          width: 35vw;
+          height: 15vh;
+          position: absolute;
+          left: 55vw;
+          margin-top: -3.5vh;
+        }
+      }
+    }
+  }
 }
