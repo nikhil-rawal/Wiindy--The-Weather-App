@@ -52,9 +52,19 @@ html {
   display: flex;
   flex-direction: row;
   margin-top: 10px;
+
   .skeleton__actpar_texts {
     display: flex;
     flex-direction: column;
+  }
+
+  @media (max-width: 550px) {
+    height: auto;
+    width: auto;
+    align-content: center;
+    justify-content: center;
+    margin: auto;
+    padding: 0;
   }
 }
 
@@ -67,19 +77,43 @@ html {
   align-items: center;
   justify-content: space-evenly;
   animation: skeleton12loading 2s linear 0s infinite alternate;
+
+  @media (max-width: 550px) {
+    flex-direction: row;
+    height: auto;
+    width: 50vw;
+    padding: 5% 0 0 0;
+    align-content: center;
+    justify-content: center;
+    margin: auto;
+    padding: 0;
+    margin-top: 5%;
+  }
 }
 .avatar12 {
   width: 30px;
   height: 30px;
   border-radius: 15px;
+  @media (max-width: 550px) {
+    order: 1;
+    margin: 0 5% 0 5%;
+  }
 }
 .text12 {
   width: 30px;
   height: 13px;
+  @media (max-width: 550px) {
+    order: 2;
+    margin: 0 5% 0 5%;
+  }
 }
 .skeleton__five {
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 550px) {
+    margin-left: 25%;
+  }
 }
 .text5 {
   width: 65px;
@@ -214,6 +248,10 @@ body {
       justify-content: center;
       align-items: center;
 
+      @media (max-width: 550px) {
+        flex-direction: column-reverse;
+      }
+
       .rowMidTop__placeDetails {
         color: $font-color1-day;
         width: 70%;
@@ -226,6 +264,10 @@ body {
 
       .rowMidTop__searchDetails {
         width: 40%;
+        @media (max-width: 550px) {
+          margin-top: 1vh;
+          width: auto;
+        }
 
         .rowMidTop__searchBar {
           display: flex;
@@ -256,6 +298,15 @@ body {
               width: 188px;
             }
           }
+
+          @media (max-width: 550px) {
+            cursor: pointer;
+            width: 200px;
+            .input__searchBar {
+              width: 188px;
+            }
+          }
+
           .btn__searchBar {
             align-items: center;
             color: $main-color1-day;
@@ -296,6 +347,14 @@ body {
         .currentTemp_Value {
           margin-top: 25px;
           margin-left: -10px;
+          @media (max-width: 550px) {
+            height: auto;
+            width: auto;
+            align-content: center;
+            justify-content: center;
+            margin: auto;
+            padding: 5% 0 0 0;
+          }
 
           .outerMostValue_Circle {
             width: 165px;
@@ -426,7 +485,27 @@ body {
         display: flex;
         flex-direction: row;
         margin-top: 18px;
-
+        &:hover {
+          cursor: pointer;
+          transition: all 0.4s ease-in-out;
+          .param_Box,
+          .param_Value1,
+          .param_Value2 {
+            transform: scale(1.1);
+          }
+        }
+        @media (max-width: 550px) {
+          height: auto;
+          width: 75vw;
+          align-content: center;
+          justify-content: center;
+          margin: auto;
+          padding: 6% 0 0 0;
+          text-align: center;
+          &:hover {
+            transition: all 0.2s ease-in-out;
+          }
+        }
         .param_Box {
           border-radius: 10px;
           width: 45px;
@@ -451,7 +530,14 @@ body {
             height: 40px;
             width: 40px;
           }
-
+          @media (max-width: 550px) {
+            height: 55px;
+            width: 55px;
+            align-content: center;
+            justify-content: center;
+            margin: auto;
+            padding: 0;
+          }
           .param_Icon {
             color: white;
           }
@@ -460,6 +546,17 @@ body {
         .param_Values {
           margin-left: 10px;
           margin-top: 1px;
+          @media (max-width: 550px) {
+            display: flex;
+            flex-direction: row;
+            height: auto;
+            width: 55vw;
+            justify-content: center;
+            align-content: center;
+          }
+          @media (max-width: 380px) {
+            width: 58vw;
+          }
           .param_Value1 {
             color: $font-color1-paramsHead;
             font-size: 0.9em;
@@ -474,6 +571,22 @@ body {
             }
             @media (max-width: 650px) {
               font-size: 0.85em;
+            }
+            @media (max-width: 550px) {
+              height: auto;
+              width: 30vw;
+              align-content: center;
+              justify-content: center;
+              margin: auto;
+              padding: 0;
+              font-size: 1.2em;
+            }
+            @media (max-width: 380px) {
+              width: 38vw;
+              font-size: 1.1em;
+            }
+            @media (max-width: 350px) {
+              font-size: 1em;
             }
           }
           .param_Value2 {
@@ -492,6 +605,23 @@ body {
             @media (max-width: 650px) {
               font-size: 0.95em;
             }
+            @media (max-width: 550px) {
+              height: auto;
+              width: 30vw;
+              align-content: center;
+              justify-content: center;
+              margin: auto;
+              padding: 0;
+              font-size: 1.3em;
+            }
+            @media (max-width: 380px) {
+              width: 34vw;
+              font-size: 1.2em;
+            }
+            @media (max-width: 350px) {
+              width: 34vw;
+              font-size: 1.1em;
+            }
           }
         }
       }
@@ -509,6 +639,15 @@ body {
         .activeParameters_Value {
           display: flex;
           flex-direction: row;
+          @media (max-width: 550px) {
+            flex-direction: column;
+            height: auto;
+            width: auto;
+            align-content: center;
+            justify-content: center;
+            margin: auto;
+            padding: 0;
+          }
 
           .parameters__Left,
           .parameters__Right {
@@ -553,8 +692,8 @@ body {
           .f12__container {
             height: 18.5vh;
             width: 3.65vw;
-            box-shadow: 0px 0px 3px 0px $main-f12color-day;
-            background: $main-f12color2-day;
+            box-shadow: none;
+            background: #ffffff;
             border-radius: 20px;
             display: flex;
             flex-direction: column;
@@ -577,8 +716,8 @@ body {
               cursor: pointer;
               transition: all 0.4s ease-in-out;
               transform: scale(1.1);
-              box-shadow: 0px 0px 2px 2px hsla(269, 99%, 61%, 0.5);
-              background-color: rgb(252, 248, 255);
+              box-shadow: 0px 0px 2px 2px hsl(0, 0%, 98%);
+              background-color: rgb(255, 255, 255);
             }
           }
         }
@@ -632,6 +771,20 @@ body {
     .rowRightBottom__Data {
       display: flex;
       flex-direction: column;
+      @media (max-width: 550px) {
+        height: auto;
+        width: auto;
+        align-content: center;
+        justify-content: center;
+        margin: auto;
+        padding: 0;
+      }
+      @media (max-width: 500px) {
+        margin-top: -5vh;
+      }
+      @media (max-width: 475px) {
+        margin-top: -10vh;
+      }
 
       .rowRightBottom__Data__FiveDayForecast {
         line-height: 1.5em;
@@ -639,6 +792,14 @@ body {
         flex-direction: column;
         padding: 1.5vh 2vw 1.5vh 2vw;
         height: 25.1vh;
+        @media (max-width: 550px) {
+          height: auto;
+          width: auto;
+          align-content: center;
+          justify-content: center;
+          margin: auto;
+          padding: 0;
+        }
 
         .fiveDayForecast__Header {
           display: flex;
@@ -646,6 +807,15 @@ body {
           width: 19vw;
           @media (max-width: 850px) {
             width: 50vw;
+          }
+          @media (max-width: 550px) {
+            height: auto;
+            width: auto;
+            align-content: center;
+            justify-content: center;
+            margin: auto;
+            padding: 0;
+            text-align: center;
           }
 
           .fiveDayForecast__Header_Name {
@@ -659,6 +829,15 @@ body {
             @media (max-width: 650px) {
               font-size: 1.5em;
             }
+            @media (max-width: 550px) {
+              font-size: 1.6em;
+              height: auto;
+              width: 45vw;
+              align-content: center;
+              justify-content: center;
+              margin: auto;
+              padding: 0;
+            }
           }
           .fiveDayForecast__Header_Value {
             font-size: 1.15em;
@@ -670,6 +849,15 @@ body {
             }
             @media (max-width: 650px) {
               font-size: 1.3em;
+            }
+            @media (max-width: 550px) {
+              font-size: 1.5em;
+              height: auto;
+              width: 30vw;
+              align-content: center;
+              justify-content: center;
+              margin: auto;
+              padding: 0;
             }
 
             display: block;
@@ -689,12 +877,29 @@ body {
           @media (max-width: 850px) {
             width: 55vw;
           }
+          @media (max-width: 550px) {
+            height: auto;
+            width: auto;
+            align-content: center;
+            justify-content: center;
+            margin: auto;
+            padding: 0;
+            text-align: center;
+          }
 
           .fiveDayForecast__Data_Name {
             display: flex;
             flex-direction: column;
             color: $font-color1-paramsHead;
             width: 14vw;
+
+            span {
+              &:hover {
+                cursor: pointer;
+                transition: all 0.2s ease-in-out;
+                transform: scale(1.1);
+              }
+            }
             @media (max-width: 850px) {
               font-size: 1.6em;
               width: 30vw;
@@ -702,17 +907,51 @@ body {
             @media (max-width: 650px) {
               font-size: 1.4em;
             }
+            @media (max-width: 550px) {
+              font-size: 1.5em;
+              height: auto;
+              width: 45vw;
+              align-content: center;
+              justify-content: center;
+              margin: auto;
+              padding: 0;
+
+              span {
+                padding: 4% 0 0 0;
+              }
+            }
           }
           .fiveDayForecast__Data_Value {
             display: flex;
             flex-direction: column;
             color: $font-color2-paramsValue;
             width: 5vw;
+
+            span {
+              &:hover {
+                cursor: pointer;
+                transition: all 0.2s ease-in-out;
+                transform: scale(1.1);
+              }
+            }
             @media (max-width: 850px) {
               font-size: 1.4em;
             }
             @media (max-width: 650px) {
               font-size: 1.3em;
+            }
+            @media (max-width: 550px) {
+              font-size: 1.4em;
+              height: auto;
+              width: 30vw;
+              align-content: center;
+              justify-content: center;
+              margin: auto;
+              padding: 0;
+
+              span {
+                padding: 4% 0 0 0;
+              }
             }
           }
         }
@@ -724,6 +963,23 @@ body {
         width: 19vw;
         height: 14vh;
 
+        @media (max-width: 550px) {
+          display: flex;
+          flex-direction: column;
+          height: auto;
+          width: 75vw;
+          align-content: center;
+          justify-content: center;
+          margin: 0vh 7vw -10vh -42vw;
+          padding: 0;
+          text-align: center;
+        }
+        @media (max-width: 450px) {
+          width: 90vw;
+        }
+        @media (max-width: 400px) {
+          margin: 0vh 7vw 0vh -42vw;
+        }
         .providers_Text {
           color: $font-color2-headings;
           font-size: 1.2em;
@@ -736,6 +992,16 @@ body {
           }
           @media (max-width: 650px) {
             font-size: 1.4em;
+          }
+          @media (max-width: 550px) {
+            font-size: 1.6em;
+            height: auto;
+            width: 75vw;
+            align-content: center;
+            justify-content: center;
+            margin: auto;
+            padding: 0;
+            text-align: center;
           }
         }
         .providers_Value {
@@ -753,16 +1019,32 @@ body {
           @media (max-width: 650px) {
             font-size: 1.3em;
           }
+          @media (max-width: 550px) {
+            font-size: 1.5em;
+            height: auto;
+            width: 75vw;
+            align-content: center;
+            justify-content: center;
+            margin: auto;
+            padding: 0;
+            text-align: center;
+          }
         }
 
         .provider_aweather {
           &:hover {
             color: hsl(18, 84.9%, 49.2%);
+            cursor: pointer;
+            transition: all 0.1s ease-in-out;
+            transform: scale(1.1);
           }
         }
         .provider_wstack {
           &:hover {
             color: hsl(201.3, 19%, 50.6%);
+            cursor: pointer;
+            transition: all 0.1s ease-in-out;
+            transform: scale(1.1);
           }
         }
       }
@@ -776,10 +1058,18 @@ body {
         @media (max-width: 850px) {
           height: 35vh;
         }
+        @media (max-width: 550px) {
+          margin-top: 30vh;
+        }
+        @media (max-width: 450px) {
+          margin-bottom: 5vh;
+        }
 
         a {
           font-size: 2em;
           &:hover {
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
             transform: scale(1.1);
           }
           @media (max-width: 850px) {
@@ -800,6 +1090,29 @@ body {
           font-size: 1.2em;
           @media (max-width: 850px) {
             font-size: 1.5em;
+          }
+          @media (max-width: 550px) {
+            font-size: 1.6em;
+            height: auto;
+            width: 75vw;
+            align-content: center;
+            justify-content: center;
+            margin: auto;
+            padding: 0;
+            text-align: center;
+          }
+        }
+
+        a {
+          @media (max-width: 550px) {
+            text-align: center;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+            margin: auto;
+            padding: 0;
+            height: auto;
+            width: auto;
           }
         }
         .contactMe__Website {
@@ -827,10 +1140,15 @@ body {
           grid-area: contactMeCopyright;
           color: $font-color1-paramsHead;
           font-size: 0.8em;
+          &:hover {
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            color: $main-color1-day;
+            transform: scale(1.2);
+          }
           @media (max-width: 850px) {
             font-size: 1em;
           }
-          // padding: 5% 0 0% 0;
         }
 
         grid-template-areas:
@@ -897,9 +1215,24 @@ body {
     .container__row_MidTop {
       height: 9vh;
 
+      @media (max-width: 550px) {
+        height: 14vh;
+      }
+      @media (max-width: 350px) {
+        padding-bottom: 2%;
+      }
+
       .rowMidTop__Data {
         .rowMidTop__placeDetails {
           font-size: 1.8em;
+          @media (max-width: 550px) {
+            margin-top: 1vh;
+            width: auto;
+            align-items: center;
+          }
+          @media (max-width: 350px) {
+            font-size: 1.6em;
+          }
         }
       }
     }
@@ -914,6 +1247,17 @@ body {
         align-items: center;
         grid-column-gap: 0%;
 
+        @media (max-width: 550px) {
+          display: flex;
+          flex-direction: column;
+          height: auto;
+          width: auto;
+          align-content: center;
+          justify-content: center;
+          margin: auto;
+          padding: 0;
+        }
+
         .data__currentTemp_Container {
           width: 25vw;
           margin-left: 7.5vw;
@@ -921,55 +1265,165 @@ body {
           @media (max-width: 650px) {
             margin-top: -1vh;
           }
-
+          @media (max-width: 550px) {
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            width: auto;
+            align-content: center;
+            justify-content: center;
+            margin: auto;
+            padding: 10% 0 5% 0;
+          }
           .currentTemp_Text {
             font-size: 1.8em;
             @media (max-width: 650px) {
               font-size: 1.5em;
+            }
+            @media (max-width: 550px) {
+              font-size: 1.8em;
+              height: auto;
+              width: auto;
+              align-content: center;
+              justify-content: center;
+              margin: auto;
+              padding: 0;
             }
           }
         }
 
         .data__activeParameters_Container {
           width: 40vw;
+          @media (max-width: 550px) {
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            width: auto;
+            align-content: center;
+            justify-content: center;
+            margin: auto;
+            padding: 10% 0 5% 0;
+          }
           .activeParameters_Text {
             font-size: 1.6em;
             @media (max-width: 650px) {
               font-size: 1.3em;
             }
+            @media (max-width: 550px) {
+              font-size: 1.6em;
+              height: auto;
+              width: auto;
+              align-content: center;
+              justify-content: center;
+              margin: auto;
+              padding: 0;
+            }
           }
           .activeParameters_Value {
-            // justify-content: space-evenly;
+            @media (max-width: 550px) {
+              display: flex;
+              flex-direction: column;
+              height: auto;
+              width: auto;
+              align-content: center;
+              justify-content: center;
+              margin: auto;
+              padding: 0;
+            }
             .parameters__Left,
             .parameters__Right {
               display: flex;
               flex-direction: column;
               width: 19.5vw;
+
+              @media (max-width: 550px) {
+                height: auto;
+                width: 75vw;
+                align-content: center;
+                justify-content: space-evenly;
+                margin: auto;
+                padding: 0;
+              }
+              @media (max-width: 450px) {
+                width: 90vw;
+              }
             }
           }
         }
 
         .data__description_Container {
           width: 25vw;
+          @media (max-width: 550px) {
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            width: auto;
+            align-content: center;
+            justify-content: center;
+            margin: auto;
+            padding: 10% 0 5% 0;
+          }
+
           .description_Text {
             font-size: 1.6em;
             @media (max-width: 650px) {
               font-size: 1.3em;
+            }
+            @media (max-width: 550px) {
+              font-size: 1.6em;
+              height: auto;
+              width: auto;
+              align-content: center;
+              justify-content: center;
+              margin: auto;
+              padding: 0;
             }
           }
         }
         .data__forecast12Hour_Container {
           width: 90vw;
           margin-left: 7.5vw;
+          @media (max-width: 550px) {
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            width: auto;
+            align-content: center;
+            justify-content: center;
+            margin: auto;
+            padding: 5% 0 5% 0;
+          }
 
           .forecast12Hour_Text {
             font-size: 1.6em;
             @media (max-width: 650px) {
               font-size: 1.4em;
             }
+            @media (max-width: 550px) {
+              font-size: 1.6em;
+              height: auto;
+              width: auto;
+              align-content: center;
+              justify-content: center;
+              margin: auto;
+              padding: 0;
+            }
           }
           .forecast12Hour_Value {
             width: 85vw;
+            @media (max-width: 550px) {
+              display: flex;
+              flex-direction: column;
+              height: auto;
+              width: 75vw;
+              align-content: center;
+              justify-content: center;
+              margin: auto;
+              padding: 0;
+            }
+            @media (max-width: 450px) {
+              width: 90vw;
+            }
 
             .f12__container {
               height: 20vh;
@@ -978,16 +1432,80 @@ body {
                 width: 5.25vw;
                 height: 17vh;
               }
+              @media (max-width: 550px) {
+                display: flex;
+                flex-direction: row;
+                height: auto;
+                width: 65vw;
+                align-content: center;
+                justify-content: center;
+                margin: auto;
+                padding: 8% 0 0 0;
+                text-align: center;
+                box-shadow: none;
+                text-align: center;
+                background-color: rgb(255, 255, 255);
+
+                &:hover {
+                  transition: all 0.2s ease-in-out;
+                  box-shadow: none;
+                  background-color: none;
+                }
+              }
+              @media (max-width: 450px) {
+                width: 80vw;
+              }
+
               .f12__time {
                 font-size: 1.15em;
                 @media (max-width: 650px) {
                   font-size: 0.9em;
+                }
+                @media (max-width: 550px) {
+                  order: 2;
+                  height: auto;
+                  width: 20 vw;
+                  align-content: center;
+                  justify-content: center;
+                  margin: auto;
+                  padding: 0;
+                  font-size: 1.3em;
+                }
+                @media (max-width: 450px) {
+                  width: 22.5vw;
+                }
+              }
+              .f12__icon {
+                @media (max-width: 550px) {
+                  order: 1;
+                  height: auto;
+                  width: 20vw;
+                  align-content: center;
+                  justify-content: center;
+                  margin: auto;
+                  padding: 0;
+                }
+                @media (max-width: 450px) {
+                  width: 22.5vw;
                 }
               }
               .f12__temp {
                 font-size: 1.25em;
                 @media (max-width: 650px) {
                   font-size: 1em;
+                }
+                @media (max-width: 550px) {
+                  order: 3;
+                  height: auto;
+                  width: 20vw;
+                  align-content: center;
+                  justify-content: center;
+                  margin: auto;
+                  padding: 0;
+                  font-size: 1.3em;
+                }
+                @media (max-width: 450px) {
+                  width: 22.5vw;
                 }
               }
             }
@@ -1007,6 +1525,17 @@ body {
         .rowRightBottom__Data__FiveDayForecast {
           width: 65vw;
           margin-left: 2.5vw;
+          @media (max-width: 550px) {
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            width: auto;
+            align-content: center;
+            justify-content: center;
+            margin: auto;
+            padding: 0;
+            padding-top: 10vh;
+          }
         }
 
         .data__providers_Container {
