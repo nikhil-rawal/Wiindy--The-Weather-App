@@ -4,7 +4,7 @@
 
 It is a website which allows the users to access the weather information for an area with just one webpage.
 
-**[My Portfolio](https://nikhil-rawal-portfolio.netlify.app/)**
+Access **[My Portfolio](https://nikhil-rawal-portfolio.netlify.app/)**
 
 <br/>
 
