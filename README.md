@@ -4,6 +4,8 @@
 
 It is a website which allows the users to access the weather information for an area with just one webpage.
 
+Access **[My Portfolio](https://nikhil-rawal-portfolio.netlify.app/)** to know more about me.
+
 <br/>
 
 # About the project
