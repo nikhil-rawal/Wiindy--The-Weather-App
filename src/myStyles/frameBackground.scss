@@ -241,6 +241,11 @@ body {
     padding: 0;
     margin: 0;
 
+    .ap-icon-pin,
+    .ap-icon-clear {
+      visibility: hidden;
+      display: none;
+    }
     .rowMidTop__Data {
       margin: 2% 3% 0 5%;
       display: flex;
@@ -255,7 +260,7 @@ body {
       .rowMidTop__placeDetails {
         color: $font-color1-day;
         width: 70%;
-        font-size: 1.7em;
+        font-size: 1.5em;
 
         @media (max-width: 1024px) {
           font-size: 1.5em;
@@ -263,7 +268,7 @@ body {
       }
 
       .rowMidTop__searchDetails {
-        width: 40%;
+        width: 50%;
         @media (max-width: 550px) {
           margin-top: 1vh;
           width: auto;
@@ -271,7 +276,7 @@ body {
 
         .rowMidTop__searchBar {
           display: flex;
-          width: 25px;
+          width: 35px;
           margin: 0px auto;
           background: rgb(255, 255, 255);
           border-radius: 25px;
@@ -289,15 +294,29 @@ body {
             border: none;
             background: transparent;
             font-size: 1em;
+
+            &::placeholder {
+              font-size: 0.8em;
+            }
           }
 
-          &:hover {
+          cursor: pointer;
+          width: 220px;
+          .input__searchBar {
+            width: 188px;
+          }
+
+          /* &:hover {
             cursor: pointer;
             width: 200px;
             .input__searchBar {
               width: 188px;
             }
-          }
+            .btn__searchBar {
+              transition: all 0.1s ease-in;
+              margin-left: -10%;
+            }
+          } */
 
           @media (max-width: 550px) {
             cursor: pointer;
@@ -310,10 +329,23 @@ body {
           .btn__searchBar {
             align-items: center;
             color: $main-color1-day;
-            font-size: 1.2em;
-            margin-left: -13%;
+            font-size: 1.6em;
+            margin-left: 5%;
             border: none;
             background: transparent;
+            padding: 2%;
+            @media (max-width: 1000px) {
+              margin-left: -15%;
+              z-index: 3;
+            }
+            @media (max-width: 550px) {
+              margin-left: 0%;
+              z-index: 3;
+            }
+            @media (max-width: 350px) {
+              margin-left: -25%;
+              z-index: 3;
+            }
           }
         }
       }

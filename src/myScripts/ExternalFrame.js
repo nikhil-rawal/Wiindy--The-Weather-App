@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import Axios from "axios";
 import { FaSearchLocation } from "react-icons/fa";
-import Alert from '@material-ui/lab/Alert';
-import AlertTitle from '@material-ui/lab/AlertTitle';
+import AlgoliaPlaces from 'algolia-places-react';
 
 import "../myStyles/frameBackground.scss"
 import ColumnLeftData from "./leftColumn/ColumnLeftData"
@@ -16,20 +15,18 @@ export const WeatherStackContext = React.createContext();
 
 function ExternalFrame() {
 
-    // nikhil const accuWeatherKey = '6fJHLNcuVZzxYAl1kElDvOcwOZrKGych';
-    //const accuWeatherKey = '0lOiuGFXOPnlXrGVatvupDjjaGVRdvG2';
-    const accuWeatherKey = '0lOiuGFXOPnlXrGVatvupDjjaGVRdvG2';
+    const accuWeatherKey = process.env.REACT_APP_ACCUWEATHERKEY;
     const accuWeatherBase = 'http://dataservice.accuweather.com/';
     const accuWeatherURLPart = `?apikey=${accuWeatherKey}`;
-    const weatherStackKey = '7b59b8f46e2ae973e8bbf1aa9e74d187';
-    // const second weatherStackKey = 'f35cc61b81d20fdddee9ad30e0fe284a';
+    const weatherStackKey = process.env.REACT_APP_WEATHERSTACKKEY;
 
-    const [text, setText] = useState("Enter City Name");
+    const [name, setname] = useState("");
+    const [lat, setlat] = useState("");
+    const [lng, setlng] = useState("");
     const [accuWeather12Hour, setaccuWeather12Hour] = useState([]);
     const [accuWeather5Day, setaccuWeather5Day] = useState([]);
     const [weatherStack, setweatherStack] = useState([]);
     const [error, seterror] = useState(null);
-
 
     async function handleAccuKey(accessKey) {
         try {
@@ -63,12 +60,10 @@ function ExternalFrame() {
         }
     }
 
-    async function handleweather(lat, lon) {
+    async function handleweather(latt, lonn) {
         try {
-            /* ---------- WeatherStack ---------- 
-            api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
-            */
-            const forecastweatherStack = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherStackKey}`;
+            /* ---------- WeatherStack ---------- */
+            const forecastweatherStack = `https://api.openweathermap.org/data/2.5/weather?lat=${latt}&lon=${lonn}&appid=${weatherStackKey}`;
             const reqWeatherStackAPI = await Axios.get(forecastweatherStack);
             setweatherStack([reqWeatherStackAPI.data]);
         }
@@ -92,15 +87,13 @@ function ExternalFrame() {
         /* ---------- Accuweather ---------- */
         //Calling to get City Key
         try {
-            const reqAccuCityID = await Axios.get(`${accuWeatherBase}locations/v1/cities/search${accuWeatherURLPart}&q=${text}`);
+            const reqAccuCityID = await Axios.get(`${accuWeatherBase}locations/v1/cities/search${accuWeatherURLPart}&q=${lat}%2C${lng}`);
             const accessKey = reqAccuCityID.data[0].Key;
-            const latitude = reqAccuCityID.data[0].GeoPosition.Latitude;
-            const longitude = reqAccuCityID.data[0].GeoPosition.Longitude;
 
             /* ----- Passing Data - Handle Accuweather Key and data ----- */
             handleAccuKey(accessKey);
             /* ----- Passing Data - Handle Weatherstack ----- */
-            handleweather(latitude, longitude);
+            handleweather(lat, lng);
         }
         catch (err) {
             if (err.response) {
@@ -118,12 +111,6 @@ function ExternalFrame() {
 
     };
 
-
-
-    function inputChangeHandler(e) {
-        setText(prevValue => (prevValue = e.target.value))
-    }
-
     return (
         <AccuWeather12HourContext.Provider value={accuWeather12Hour}>
             <AccuWeather5DayContext.Provider value={accuWeather5Day}>
@@ -131,33 +118,11 @@ function ExternalFrame() {
                     {
                         error && (() => {
                             if (error !== undefined && error.length !== 0 && error !== null) {
-                                <Alert variant="filled" severity="error">
-                                    <AlertTitle>Error</AlertTitle>
-                                    Could not fetch details. Please try again!
-                                </Alert>
+                                console.error('An error occured')
                             }
                         })()
                     }
                     <div className="externalFrame__container">
-
-                        {/* <input id="toggle" type="checkbox"></input>
-                        <label className="toggle-container" for="toggle">
-                            <span className="button button-toggle"></span>
-                        </label>
-                        <nav className="nav">
-                            <a className="nav-item" href="">Dashboard</a>
-                            <a className="nav-item" href="">Location</a>
-                            <a className="nav-item" href="">Description</a>
-                            <a className="nav-item" href="">Temperature</a>
-                            <a className="nav-item" href="">Active Parameters</a>
-                            <a className="nav-item" href="">Description</a>
-                            <a className="nav-item" href="">12-Hour Forecast</a>
-                            <a className="nav-item" href="">5-Day Forecast</a>
-                            <a className="nav-item" href="">Data Providers</a>
-                            <a className="nav-item" href="">Contact Me</a>
-                        </nav>
-
-                        <div className="dummy-content"></div> */}
 
                         <div className="container__column_Left">
                             <ColumnLeftData />
@@ -165,23 +130,30 @@ function ExternalFrame() {
                         <div className="container__row_MidTop">
                             <div className="rowMidTop__Data">
                                 <div className="rowMidTop__placeDetails">
-                                    {
-
-                                        !weatherStack && (() => {
-                                            return text
-                                        })()
-                                    }{
-                                        weatherStack && (() => {
-                                            if (weatherStack !== null && weatherStack !== undefined && weatherStack.length !== 0 && typeof weatherStack !== 'string') {
-                                                return `${weatherStack[0].name}, ${weatherStack[0].sys.country}`
-                                            }
-                                        })()
-                                    }
-
+                                    {name}
                                 </div>
                                 <form className="rowMidTop__searchDetails" onSubmit={formSubmitHandler}>
                                     <div className="rowMidTop__searchBar">
-                                        <input type="text" autoComplete="off" name="searchBar" placeholder="Search..." value={text} className="input__searchBar" onChange={inputChangeHandler} />
+                                        <AlgoliaPlaces
+                                            className="input__searchBar"
+                                            autoComplete="off"
+                                            name="searchBar"
+                                            placeholder="Type Place and Press Enter"
+                                            style={{ width: "220px" }}
+                                            onChange={({ suggestion }) => {
+                                                setlat(prevValue => prevValue = suggestion.latlng.lat)
+                                                setlng(prevValue => prevValue = suggestion.latlng.lng)
+                                                setname(prevValue => prevValue = `${suggestion.name}, ${suggestion.country}`)
+                                            }}
+                                            onLimit={
+                                                ({ message }) =>
+                                                    console.error('Limit reached. Please try again in 60 minutes. Error Message: ' + message)}
+
+                                            onError={
+                                                ({ message }) =>
+                                                    console.error('Could not make request. Please try again later. Error Message: ' + message)}
+                                        />
+                                        {/* <input type="text" autoComplete="off" name="searchBar" placeholder="Search..." value={text} className="input__searchBar" onChange={inputChangeHandler} /> */}
                                         <button type="submit" className="btn__searchBar"><FaSearchLocation /></button>
                                     </div>
                                 </form>
