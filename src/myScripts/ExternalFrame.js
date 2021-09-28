@@ -15,9 +15,6 @@ export const WeatherStackContext = React.createContext();
 
 function ExternalFrame() {
 
-    console.log(process.env.REACT_APP_ACCUWEATHERKEY)
-    console.log(process.env.REACT_APP_WEATHERSTACKKEY)
-
     const accuWeatherKey = process.env.REACT_APP_ACCUWEATHERKEY;
     const accuWeatherBase = 'http://dataservice.accuweather.com/';
     const accuWeatherURLPart = `?apikey=${accuWeatherKey}`;
@@ -141,7 +138,7 @@ function ExternalFrame() {
                                             className="input__searchBar"
                                             autoComplete="off"
                                             name="searchBar"
-                                            placeholder="Type Place and Press Enter"
+                                            placeholder="Type and Press Search Button"
                                             style={{ width: "220px" }}
                                             onChange={({ suggestion }) => {
                                                 setlat(prevValue => prevValue = suggestion.latlng.lat)
